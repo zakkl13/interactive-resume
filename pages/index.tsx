@@ -5,12 +5,18 @@ import Link from 'next/link';
 import homeStyles from '@/styles/Home.module.css';
 import { Link as ScrollLink } from 'react-scroll';
 import Experience from './experience';
+import { useRouter } from 'next/router'
 
 
 const Home = () => {
+  const router = useRouter()
+
+  let currentSection = 'homeSection';
+
+  console.log(router.pathname)
   return (
     <div className={homeStyles.container}>
-      <section className={homeStyles.bannerSection}>
+      <section id="homeSection" className={`${homeStyles.bannerSection} h-screen`}>
         <h1 className={homeStyles.banner}>
           <span>Zakk Lefkowits</span>
         </h1>
@@ -30,7 +36,7 @@ const Home = () => {
           to="experienceSection"
           smooth={true}
           duration={800}
-          className={homeStyles.experienceButton}
+          className={`${homeStyles.navButton} bottom-0`}
         >
           <span>Experience</span>
 
@@ -38,6 +44,17 @@ const Home = () => {
         </ScrollLink>
       </section>
       <section id="experienceSection" className={homeStyles.experienceSection}>
+        <ScrollLink
+            to="homeSection"
+            smooth={true}
+            duration={800}
+            className={homeStyles.navButton}
+          >
+
+            <div className={homeStyles.arrowUp}></div>
+            <span>Home</span>
+
+          </ScrollLink>
 
         <Experience></Experience>
       </section>

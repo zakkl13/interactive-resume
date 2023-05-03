@@ -31,11 +31,6 @@
   .iconLink {
     margin: 0 1rem;
   }
-  
-  .experienceButton {
-    position: absolute;
-    bottom: 1rem;
-  }
 
   
   .header {
@@ -44,7 +39,7 @@
     margin-bottom: 2rem;
   }
 
-  .experienceButton {
+  .navButton {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,12 +52,12 @@
     padding: 0.5rem 1rem;
     border-radius: 0.5rem;
   }
-
-  .experienceButton:hover {
+  
+  .navButton:hover {
     background-color: rgba(16, 152, 173, 0.1);
     transition: background-color 0.3s ease;
   }
-
+  
   .arrowDown {
     border: solid #1098ad;
     border-width: 0 3px 3px 0;
@@ -72,6 +67,15 @@
     transition: transform 0.3s ease;
   }
   
-  .experienceButton:hover .arrowDown {
-    transform: rotate(45deg) scale(1.2);
+  .arrowUp {
+    border: solid #1098ad;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-135deg);
+    transition: transform 0.3s ease;
+  }
+  
+  .navButton:hover .arrowDown .arrowUp {
+    transform: rotate(45deg) scale(1.8);
   }

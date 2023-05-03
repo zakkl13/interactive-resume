@@ -23,38 +23,3 @@
     font-size: 2rem;
     font-weight: bold;
   }
-
-  .homeButton {
-    position: absolute;
-    top: 1rem;
-  }
-
-  .arrowUp {
-    border: solid #1098ad;
-    border-width: 0 2px 2px 0;
-    display: inline-block;
-    padding: 3px;
-    transform: rotate(-135deg);
-    -webkit-transform: rotate(-135deg);
-  }
-
-  .experienceButton,
-  .homeButton {
-    font-size: 1.25rem;
-    cursor: pointer;
-    border: none;
-    text-decoration: none;
-    background-color: transparent;
-    color: #1098ad;
-    padding: 0.5rem 1rem;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .homeButtonContainer {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
