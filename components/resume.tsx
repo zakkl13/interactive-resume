@@ -113,7 +113,7 @@ const Resume: React.FC = () => {
     return (<div className="pt-1">
         <p><span className="font-semibold">{sd.title}</span> - {parseInlineMarkdown(sd.intro)}</p>
         <ul className="list-disc ml-8">
-            {sd.bullets.map(b => ((<li>{parseInlineElements(b)}</li>)))}
+            {sd.bullets.map((b, idx, arr) => ((<li key={idx}>{parseInlineElements(b)}</li>)))}
         </ul>
     </div>);
   }
