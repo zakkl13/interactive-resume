@@ -34,10 +34,10 @@ export interface ExperienceSubDescription {
   
   export const resumeData: Resume = {
     name: "Zakk Lefkowits",
-    email: "zakk@example.com",
+    email: "zlefkowits@gmail.com",
     linkedin: "https://www.linkedin.com/in/zakklefkowits/",
     github: "https://github.com/zakkl13",
-    summary: `{{hover text=\"Tech Lead\" context=\"6 years of professional experience as a software developer\"}} at Amazon experienced in building products at scale to solve business problems and delight customers. 
+    summary: `Tech Lead at Amazon {{hover text=\"experienced\" context=\"6 years of professional software development experience\"}} in building products at scale to solve business problems and delight customers. 
               Demonstrated ability to lead teams, solve hard problems, learn quickly and communicate with clarity. 
               Passionate about efficiency over process, team over individual and automation over assumption. 
               Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text=\"AWS architecture\" context=\"Services include EC2, SQS, DynamoDB, S3\"}}, and Java services.`,
@@ -58,13 +58,13 @@ export interface ExperienceSubDescription {
                 `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences, aligned diverse set of stakeholders on critical trade-off decisions.`,
                 `Designed the partner facing Java API contract to collect users\’ in-app data`,
                 `Led development of on-device Rust service to efficiently process data and handle new features on commodity consumer hardware with less than 3MB memory footprint`,
-                `Built a cost-efficient distributed backend system on AWS leveraging up to 300,000 transactions per second while handling sensitive user and partner data`,
+                `Built a cost-efficient distributed backend system on AWS to process up to 300,000 transactions per second while handling sensitive user and partner data`,
                 `Worked closely with product team to hone requirements and influence product design`
               ]
             },
             {
               title: "Live TV Integration",
-              intro: "I improved and operating the existing [Live TV](https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4) integration on Fire TV",
+              intro: "I improved and operated the existing [Live TV](https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4) integration on Fire TV",
               bullets: [
                 `Oversaw launches of 20+ partners`,
                 `Improved latency by 50% in “tune to channel” voice command`,
@@ -82,12 +82,34 @@ export interface ExperienceSubDescription {
             }
           ]
         }]
-        // description: `I am the tech lead for the Fire TV Partner Integrations team of 10 engineers. 
-        //               The team builds deep integrations with 3P content partners (e.g., Hulu) to enhance the Fire TV experience for millions of users.
-                      
-        //               I served as the technical lead for Building a new [Continue Watching](https://www.androidpolice.com/amazon-fire-tv-continue-watching/) integration.
-        //               * Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences, aligned diverse set of stakeholders on critical trade-off decisions `,
       },
+      {
+        title: "Senior Consultant",
+        company: "CapTech Consulting",
+        duration: "July 2017 - March 2020",
+        descriptions: [
+          {
+            intro: "I worked as a consultant where I was deployed to client sites with a team to execute critical software projects. I worked on a wide variety of projects, primarily spending my time on two for the same global top 10 insurance client.",
+            subDescriptions: [
+              {
+                title: "AWS Application Migration",
+                intro: "I worked as part of a two person team to migrate the entire legacy tech stack to AWS",
+                bullets: [
+
+                ]
+              },
+              {
+                title: "Insurance Web App Refresh",
+                intro: "Worked with small team to build co-branded websites with partners.",
+                bullets: [
+
+                ]
+              }
+            ]
+          },
+        ]
+
+      }
     ],
     education: [
       {
