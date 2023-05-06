@@ -90,7 +90,7 @@ export interface ExperienceSubDescription {
             subDescriptions: [
               {
                 title: "AWS Application Migration",
-                intro: "Global Top 10 Insurance Client. Migrated legacy enterprise tech stack to AWS",
+                intro: "Global Top 10 Insurance Client. Migrated legacy enterprise tech stack to AWS.",
                 bullets: [
                   `Designed {{bold text='AWS ECS'}} architecture to migrate existing containers`,
                   `Designed mature cloud architecture and CI/CD based on {{bold text='AWS CodeDeploy'}} for legacy windows-based Java payment application responsible for processing ~$1bn/year`,
