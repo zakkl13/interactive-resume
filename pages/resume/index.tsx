@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import HomePage from "@/components/homepage";
-import { homeDefault } from "@/data/homeData";
+import Resume from "@/components/resume";
+import { resumeData } from "@/data/resumeData";
 
 const ResumePage: React.FC = () => {
 
   useEffect(() => {
-    document.title = 'Zakk.IO';
+    document.title = 'Zakk\'s Resume';
   })
   return (
     <div>
-      <HomePage data={homeDefault} />
+      <Resume data={resumeData} />
     </div>
   );
 };
