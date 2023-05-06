@@ -1,11 +1,8 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faEnvelope, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEnvelope, faCode } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { resumeData, Experience, Education, ExperienceDescription, ExperienceSubDescription } from "@/data/resumeData";
-import { StandardFonts } from 'pdf-lib'
-import { PDFDocument, rgb } from "pdf-lib";
-import { saveAs } from "file-saver";
 import HoverableText from "./hoverableText";
 
   const parseHoverableText = (input: string): Array<string | JSX.Element> => {
@@ -154,14 +151,17 @@ const Resume: React.FC = () => {
     <div className="container mx-auto p-8 max-w-5xl">
     <div className="relative">
       <h1 className="text-6xl font-bold mb-4 text-center">{resumeData.name}</h1>
-      <button className="absolute top-0 right-0 p-2">
-        <FontAwesomeIcon icon={faDownload} />
-      </button>
+      <div className="absolute top-0 right-0 p-2 flex items-center inline-block space-x-2">
+        <FontAwesomeIcon icon={faCode} />
+        <a href="https://github.com/zakkl13/interactive-resume" target="_blank">
+            <p>source</p>
+        </a>
+      </div>
     </div>
     <div className="flex justify-center mb-8">
-      <div className="mr-4">
+      <div className="flex items-center mr-4">
+        <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
         <a className="flex items-center" href="mailto:zlefkowits@gmail.com">
-            <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
             <p>Email</p>
         </a>   
       </div>
