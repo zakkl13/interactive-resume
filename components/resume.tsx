@@ -40,7 +40,7 @@ const Resume: React.FC = () => {
     return (
       <div className="py-2 flex justify-between inline-block">
         <div className="align-middle">
-            <h3 className="text-xl font-bold">{edu.degree}</h3>
+            <h3 className="text-xl font-semibold">{edu.degree}</h3>
             <p className="text-md">{edu.school}</p>
         </div>
       </div>
@@ -82,10 +82,13 @@ const Resume: React.FC = () => {
 
       <div className="flex justify-between border-b-2 border-gray-200">
         <span>
-        <h2 className="text-2xl font-bold mb-4">Education</h2>        
-        {resumeData.education.map(renderEducation)}
+            <h2 className="text-2xl font-bold mb-4">Education</h2>        
+            {resumeData.education.map(renderEducation)}
         </span>
-        <img className="align-top" src={resumeData.education[0].image} height="150px" width="150px" />
+        <img className="align-center" src={resumeData.education[0].image} style={{
+            height: "150px",
+            width: "150px"
+        }} />
       </div>
     </div>
   );

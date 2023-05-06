@@ -19,7 +19,7 @@ export const parseFormattedText = (input: string): Array<string | JSX.Element> =
           parts.push(<HoverableText key={text} text={text} context={context} />);
           break;
         case 'bold':
-          parts.push(<strong key={text}>{text}</strong>);
+          parts.push(<span className="font-semibold" key={text}>{text}</span>);
           break;
         case 'link':
           parts.push(
