@@ -5,7 +5,8 @@ import { faFile } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { HomeData } from '../data/homeData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { FontawesomeObject, IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import Qotd from './qotd';
 
 interface HomePageProps {
     data: HomeData;
@@ -51,11 +52,12 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-yellow-200 to-yellow-500">
             {/* Title and animation */}
-            <h1 className={`text-4xl md:text-6xl font-bold text-black text-center mb-12 ${animatedTitle.length < fullTitle.length ? "blinking-cursor" : ""}`}>{animatedTitle}</h1>
+            <h1 className={`text-4xl md:text-6xl font-bold text-black text-center mb-8 ${animatedTitle.length < fullTitle.length ? "blinking-cursor" : ""}`}>{animatedTitle}</h1>
+            <Qotd />
 
             <div className="bg-white rounded-lg p-8 w-full md:w-3/4 mb-4">
                 <h2 className="text-4xl font-semibold mb-4">Quick Links</h2>
-                <ul className="md:flex md:items-center place-content-evenly space-y-2">
+                <ul className=" flex-col flex md:flex-row md:items-center place-content-evenly">
                     {renderLink(faFile, "Resume", data.resume, false)}
                     {renderLink(faLinkedin, "LinkedIn", data.linkedin)}
                     {renderLink(faGithub, "GitHub", data.github)}
