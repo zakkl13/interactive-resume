@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    font-family: Proxima Nova, system-ui, sans-serif;
+    font-family: ui-monospace, system-ui, sans-serif;
   }
 }
 
@@ -49,3 +49,16 @@ a:hover {
   }
 }
 
+.blinking-cursor::after {
+  content: "|";
+  animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+  from,
+  to {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}

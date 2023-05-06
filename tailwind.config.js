@@ -8,7 +8,7 @@ module.exports = {
         'secondary': '#9333EA',
       },
       fontFamily: {
-        'sans': ['Inter', 'sans-serif'],
+        mono: ['Liberation Mono', 'monospace'],
       },
     },
   variants: {

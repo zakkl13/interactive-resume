@@ -1,4 +1,4 @@
-export interface Resume {
+export interface ResumeData {
   name: string,
   github: string,
   email: string,
@@ -13,7 +13,7 @@ export interface Experience {
     company: string;
     duration: string;
     descriptions: ExperienceDescription[];
-  }
+}
 
 export interface ExperienceDescription {
   intro: string;
@@ -32,7 +32,7 @@ export interface ExperienceSubDescription {
     image: string;
   }
   
-  export const resumeData: Resume = {
+  export const resumeData: ResumeData = {
     name: "Zakk Lefkowits",
     email: "zlefkowits@gmail.com",
     linkedin: "https://www.linkedin.com/in/zakklefkowits/",
@@ -46,13 +46,13 @@ export interface ExperienceSubDescription {
         duration: "April 2020 - Present",
         descriptions: [{
           intro: `Tech lead for the Fire TV Partner Integrations team of 10 engineers. Responsible for enabling deep integrations with Third Party content partners to enhance the Fire TV experience for millions of users. 
-                  Promoted to Senior Engineer in Q4 2022`,
+                  Promoted to Senior Engineer in Q4 2022.`,
           subDescriptions: [
             {
-              title: "Continue Watching Integration Project",
+              title: "Continue Watching Integration",
               intro: `Built new {{link text='Continue Watching' out='https://www.androidpolice.com/amazon-fire-tv-continue-watching/'}} integration to enable critical customer use case.`,
               bullets: [
-                `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences, aligned diverse set of stakeholders on critical trade-off decisions.`,
+                `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences.`,
                 `Led development of on-device {{bold text='Rust'}} service to efficiently process data and handle new features on commodity consumer hardware with less than 3MB memory footprint`,
                 `Built a cost-efficient distributed backend system on {{bold text='AWS'}} to process up to 300,000 transactions per second while handling sensitive user and partner data`,
               ]
@@ -61,7 +61,8 @@ export interface ExperienceSubDescription {
               title: "Live TV Integration",
               intro: "Improved and operated the existing {{link text='Live TV' out='https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4'}} integration on Fire TV",
               bullets: [
-                `Oversaw launches of 20+ partners`,
+                `Oversaw launches of 20+ Live TV (e.g., {{link text='DirecTv' out='https://amazonfiretv.blog/fire-tv-launches-new-linear-live-tv-experience-for-directv-stream-subscribers-9d9632e8b518'}}) partners`,
+                `Enhanced monitoring capabilities to identify customer-impacting issues in real-time`,
                 `Improved latency by 50% in Live TV voice commands “{{hover text='tune to channel' context='For example, 'Alexa, tune to ABC' '}}” voice command by optimizing {{bold text='Java'}} services stack.`,
                 `Built up developer resources including significant improvements to the {{link text='reference app' out='https://github.com/amzn/ftv-livetv-sample-tv-app'}} for developers as well as writing a {{link text='step-by-step integration guide' out='https://developer.amazon.com/docs/fire-tv/linear-tv-integration-guide-overview.html'}}.`
               ]

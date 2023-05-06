@@ -2,10 +2,14 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faEnvelope, faCode } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
-import { resumeData, Experience, Education, ExperienceDescription, ExperienceSubDescription } from "@/data/resumeData";
+import { Experience, Education, ExperienceDescription, ExperienceSubDescription, ResumeData } from "@/data/resumeData";
 import { parseFormattedText } from "@/utils/formatter";
 
-const Resume: React.FC = () => {
+export interface ResumeProps {
+    data: ResumeData
+}
+
+const Resume: React.FC<ResumeProps> = ({data}) => {
   const renderExperienceSubDescription = (sd: ExperienceSubDescription) => {
     return (<div className="pt-1">
         <p><span className="font-semibold">{sd.title}</span> - {parseFormattedText(sd.intro)}</p>
@@ -50,7 +54,7 @@ const Resume: React.FC = () => {
   return (
     <div className="container mx-auto p-8 max-w-5xl">
     <div className="relative">
-      <h1 className="text-6xl font-bold mb-4 text-center">{resumeData.name}</h1>
+      <h1 className="text-6xl font-bold mb-4 text-center">{data.name}</h1>
       <div className="absolute top-0 right-0 p-2 flex items-center inline-block space-x-2">
         <a href="https://github.com/zakkl13/interactive-resume" target="_blank">
             <FontAwesomeIcon icon={faCode} />
@@ -66,26 +70,26 @@ const Resume: React.FC = () => {
       </div>
       <div className="flex items-center mr-4">
         <FontAwesomeIcon icon={faLinkedin} className="mr-2" />
-        <a href={resumeData.linkedin}>LinkedIn</a>
+        <a href={data.linkedin}>LinkedIn</a>
       </div>
       <div className="flex items-center">
         <FontAwesomeIcon icon={faGithub} className="mr-2" />
-        <a href={resumeData.github}>GitHub</a>
+        <a href={data.github}>GitHub</a>
       </div>
     </div>
-    <p className="mb-8">{parseFormattedText(resumeData.summary)}</p>
+    <p className="mb-8">{parseFormattedText(data.summary)}</p>
 
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Experience</h2>
-        {resumeData.experience.map(renderExperience)}
+        {data.experience.map(renderExperience)}
       </div>
 
       <div className="flex justify-between border-b-2 border-gray-200">
         <span>
             <h2 className="text-2xl font-bold mb-4">Education</h2>        
-            {resumeData.education.map(renderEducation)}
+            {data.education.map(renderEducation)}
         </span>
-        <img className="align-center" src={resumeData.education[0].image} style={{
+        <img className="align-center" src={data.education[0].image} style={{
             height: "150px",
             width: "150px"
         }} />
