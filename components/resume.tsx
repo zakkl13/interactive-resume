@@ -3,114 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faEnvelope, faCode } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { resumeData, Experience, Education, ExperienceDescription, ExperienceSubDescription } from "@/data/resumeData";
-import HoverableText from "./hoverableText";
-
-  const parseHoverableText = (input: string): Array<string | JSX.Element> => {
-    const regexHover = /{{hover text="(.*?)" context="(.*?)"}}/g;
-    const parts: Array<string | JSX.Element> = [];
-    let lastIndex = 0;
-    let match;
-  
-    while ((match = regexHover.exec(input)) !== null) {
-      const [fullMatch, text, context] = match;
-      const index = match.index;
-  
-      if (index > lastIndex) {
-        parts.push(input.slice(lastIndex, index));
-      }
-  
-      parts.push(<HoverableText key={text} text={text} context={context} />);
-      lastIndex = index + fullMatch.length;
-    }
-  
-    if (lastIndex < input.length) {
-      parts.push(input.slice(lastIndex));
-    }
-  
-    return parts;
-  };
-
-  const parseInlineMarkdown = (input: string): Array<string | JSX.Element> => {
-    const regexLink = /\[(.*?)\]\((.*?)\)/g;
-    const parts: Array<string | JSX.Element> = [];
-    let lastIndex = 0;
-    let match;
-  
-    while ((match = regexLink.exec(input)) !== null) {
-      const [fullMatch, text, url] = match;
-      const index = match.index;
-  
-      if (index > lastIndex) {
-        parts.push(input.slice(lastIndex, index));
-      }
-  
-      parts.push(
-        <a key={text} href={url} target="_blank" rel="noopener noreferrer">
-          {text}
-        </a>
-      );
-      lastIndex = index + fullMatch.length;
-    }
-  
-    if (lastIndex < input.length) {
-      parts.push(input.slice(lastIndex));
-    }
-  
-    return parts;
-  };
-
-  const parseInlineElements = (input: string): Array<string | JSX.Element> => {
-    const regexHover = /{{hover text="(.*?)" context="(.*?)"}}/g;
-    const regexLink = /\[(.*?)\]\((.*?)\)/g;
-    const parts: Array<string | JSX.Element> = [];
-    let lastIndex = 0;
-    
-    while (true) {
-      const hoverMatch = regexHover.exec(input);
-      const linkMatch = regexLink.exec(input);
-      
-      if (!hoverMatch && !linkMatch) break;
-  
-      const hoverIndex = hoverMatch ? hoverMatch.index : Infinity;
-      const linkIndex = linkMatch ? linkMatch.index : Infinity;
-      
-      const minIndex = Math.min(hoverIndex, linkIndex);
-      const isHover = hoverIndex === minIndex;
-  
-      if (minIndex > lastIndex) {
-        parts.push(input.slice(lastIndex, minIndex));
-      }
-  
-      if (isHover) {
-        const [fullMatch, text, context] = hoverMatch!;
-        parts.push(<HoverableText key={text} text={text} context={context} />);
-        lastIndex = minIndex + fullMatch.length;
-        regexLink.lastIndex = lastIndex;
-      } else {
-        const [fullMatch, text, url] = linkMatch!;
-        parts.push(
-          <a key={text} href={url} target="_blank" rel="noopener noreferrer">
-            {text}
-          </a>
-        );
-        lastIndex = minIndex + fullMatch.length;
-        regexHover.lastIndex = lastIndex;
-      }
-    }
-  
-    if (lastIndex < input.length) {
-      parts.push(input.slice(lastIndex));
-    }
-  
-    return parts;
-  };
+import { parseFormattedText } from "@/utils/formatter";
 
 const Resume: React.FC = () => {
   const renderExperienceSubDescription = (sd: ExperienceSubDescription) => {
     return (<div className="pt-1">
-        <p><span className="font-semibold">{sd.title}</span> - {parseInlineMarkdown(sd.intro)}</p>
+        <p><span className="font-semibold">{sd.title}</span> - {parseFormattedText(sd.intro)}</p>
         <ul className="list-disc ml-8">
-            {sd.bullets.map((b, idx, arr) => ((<li key={idx}>{parseInlineElements(b)}</li>)))}
+            {sd.bullets.map((b, idx, arr) => ((<li key={idx}>{parseFormattedText(b)}</li>)))}
         </ul>
     </div>);
   }
@@ -129,7 +29,7 @@ const Resume: React.FC = () => {
   const renderExperience = (exp: Experience) => {
     return (
       <div className="border-b-2 border-gray-200 py-2">
-        <h3 className="text-xl font-bold">{exp.title} | {parseHoverableText(exp.company)}</h3>
+        <h3 className="text-xl font-bold">{exp.title} | {parseFormattedText(exp.company)}</h3>
         <p className="text-md italic">{exp.duration}</p>
         {exp.descriptions.map(renderExperienceDescription)}
       </div>
@@ -152,9 +52,8 @@ const Resume: React.FC = () => {
     <div className="relative">
       <h1 className="text-6xl font-bold mb-4 text-center">{resumeData.name}</h1>
       <div className="absolute top-0 right-0 p-2 flex items-center inline-block space-x-2">
-        <FontAwesomeIcon icon={faCode} />
         <a href="https://github.com/zakkl13/interactive-resume" target="_blank">
-            <p>source</p>
+            <FontAwesomeIcon icon={faCode} />
         </a>
       </div>
     </div>
@@ -174,7 +73,7 @@ const Resume: React.FC = () => {
         <a href={resumeData.github}>GitHub</a>
       </div>
     </div>
-    <p className="mb-8">{parseHoverableText(resumeData.summary)}</p>
+    <p className="mb-8">{parseFormattedText(resumeData.summary)}</p>
 
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Experience</h2>
