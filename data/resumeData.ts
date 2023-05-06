@@ -30,6 +30,7 @@ export interface ExperienceSubDescription {
     school: string;
     degree: string;
     duration: string;
+    image: string;
   }
   
   export const resumeData: Resume = {
@@ -37,7 +38,7 @@ export interface ExperienceSubDescription {
     email: "zlefkowits@gmail.com",
     linkedin: "https://www.linkedin.com/in/zakklefkowits/",
     github: "https://github.com/zakkl13",
-    summary: `Tech Lead at Amazon {{hover text=\"experienced\" context=\"6 years of professional software development experience\"}} in building products at scale to solve business problems and delight customers. 
+    summary: `Software Engineer at Amazon {{hover text=\"experienced\" context=\"6 years of professional software development experience\"}} in building products at scale to solve business problems and delight customers. 
               Demonstrated ability to lead teams, solve hard problems, learn quickly and communicate with clarity. 
               Passionate about efficiency over process, team over individual and automation over assumption. 
               Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text=\"AWS architecture\" context=\"Services include EC2, SQS, DynamoDB, S3\"}}, and Java services.`,
@@ -47,37 +48,35 @@ export interface ExperienceSubDescription {
         company: "Amazon, {{hover text=\"Fire TV\" context=\"Fire TV is a leading streaming media platform having sold over 200 million devices to date.\"}}",
         duration: "April 2020 - Present",
         descriptions: [{
-          intro: `I am the tech lead for the Fire TV Partner Integrations team of 10 engineers. 
-                  The team builds deep integrations with 3P content partners (e.g., Hulu) to enhance the Fire TV experience for millions of users. 
-                  I was promoted to Sr. Engineer and designated formal technical lead in Q4 2022`,
+          intro: `Tech lead for the Fire TV Partner Integrations team of 10 engineers. Responsible for enabling deep integrations with Third Party content partners to enhance the Fire TV experience for millions of users. 
+                  Promoted to Senior Engineer in Q4 2022`,
           subDescriptions: [
             {
               title: "Continue Watching Integration Project",
-              intro: `As technical lead I shepherded the [Continue Watching](https://www.androidpolice.com/amazon-fire-tv-continue-watching/) integration from requirements to MVP launch.`,
+              intro: `Built new [Continue Watching](https://www.androidpolice.com/amazon-fire-tv-continue-watching/) integration to enable critical customer use case.`,
               bullets: [
                 `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences, aligned diverse set of stakeholders on critical trade-off decisions.`,
-                `Designed the partner facing Java API contract to collect users\’ in-app data`,
                 `Led development of on-device Rust service to efficiently process data and handle new features on commodity consumer hardware with less than 3MB memory footprint`,
                 `Built a cost-efficient distributed backend system on AWS to process up to 300,000 transactions per second while handling sensitive user and partner data`,
-                `Worked closely with product team to hone requirements and influence product design`
               ]
             },
             {
               title: "Live TV Integration",
-              intro: "I improved and operated the existing [Live TV](https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4) integration on Fire TV",
+              intro: "Improved and operated the existing [Live TV](https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4) integration on Fire TV",
               bullets: [
                 `Oversaw launches of 20+ partners`,
-                `Improved latency by 50% in “tune to channel” voice command`,
-                `Built up developer resources including significant improvements to the [sample app](https://github.com/amzn/ftv-livetv-sample-tv-app) as well as writing a [step-by-step integration guide](https://developer.amazon.com/docs/fire-tv/linear-tv-integration-guide-overview.html).`
+                `Improved latency by 50% in Live TV voice commands “{{hover text=\"tune to channel\" context=\"For example, \"Alexa, tune to ABC\" \"}}” voice command`,
+                `Built up developer resources including significant improvements to the [reference app](https://github.com/amzn/ftv-livetv-sample-tv-app) for developers as well as writing a [step-by-step integration guide](https://developer.amazon.com/docs/fire-tv/linear-tv-integration-guide-overview.html).`
               ]
             },
             {
               title: "Team Leadership & Responsibilities",
-              intro: "As team lead ",
+              intro: "",
               bullets: [
-                `Acted as technical expert for Amazon in meetings with top US content providers (e.g., Netflix, HBO, Youtube TV, etc.) business and engineering teams to drive adoption of integrations`,
-                `Raised team technical quality bar through individual mentorship, leading by example and building {{hover text=\"mechanisms\" context=\"On my current team I established a weekly Engineering Sync. This is a few hours per week to gather the engineers in a room and have an open forum to break down problems, pair program, de-bug and discuss design trade-offs.\"}} to foster healthy engineering culture`,
-                `Mentored individual engineers leading to two promotions from junior to mid-level`
+                `Acted as technical expert for Amazon in negotiations with top US content providers (e.g., Netflix, HBO, etc.) business and engineering teams to drive adoption of integrations`,
+                `Raised team technical quality bar through individual mentorship, leading by example and building {{hover text=\"mechanisms\" context=\"Established a weekly Engineering Sync. Few hours per week to gather engineers and have an open forum to break down problems, pair program, de-bug and discuss design trade-offs.\"}} to foster healthy engineering culture`,
+                `Mentored individual engineers leading to two promotions from junior to mid-level`,
+                `Whittled down unnecessary process to boost team productivity`
               ]
             }
           ]
@@ -89,20 +88,24 @@ export interface ExperienceSubDescription {
         duration: "July 2017 - March 2020",
         descriptions: [
           {
-            intro: "I worked as a consultant where I was deployed to client sites with a team to execute critical software projects. I worked on a wide variety of projects, primarily spending my time on two for the same global top 10 insurance client.",
+            intro: "Consultant deployed to clients to execute critical software projects and advise on technical strategy.",
             subDescriptions: [
               {
                 title: "AWS Application Migration",
-                intro: "I worked as part of a two person team to migrate the entire legacy tech stack to AWS",
+                intro: "Global Top 10 Insturance Client. Migrated legacy enterprise tech stack to AWS",
                 bullets: [
-
+                  `Designed AWS Elastic Container Service (ECS) architecture to migrate existing containers`,
+                  `Designed mature cloud architecture and CI/CD based on AWS CodeDeploy for legacy windows-based Java payment application responsible for processing ~$1bn/year`,
+                  `Developed command line interface written in Typescript to facilitate common AWS deployments`,
+                  `Built Infrastructure-as-Code (IaC) templates for AWS resources`
                 ]
               },
               {
                 title: "Insurance Web App Refresh",
-                intro: "Worked with small team to build co-branded websites with partners.",
+                intro: "Global Top 10 Insturance Client. Built framework for co-branded insurance websites.",
                 bullets: [
-
+                  `Delivered client web app framework; built on an Angular front-end and Node.js backend`,
+                  `Implemented headless CMS system to allow buisness users to create arbitrary websites for 100s of insurance partners.`
                 ]
               }
             ]
@@ -116,6 +119,7 @@ export interface ExperienceSubDescription {
         school: "Virginia Polytechnic Institute and State University; Blacksburg, VA; Cum Laude",
         degree: "Bachelor of Science, Computer Science, Mathematics Minor: May 2017",
         duration: "2016 - 2020",
+        image: "/vt.png"
       },
       // More education objects...
     ],

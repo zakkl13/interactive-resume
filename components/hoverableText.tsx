@@ -17,7 +17,7 @@ const HoverableText: React.FC<HoverableTextProps> = ({ text, context }) => {
     >
       {text}
       {isHovered && (
-        <div className="absolute bg-white border border-gray-300 p-2 rounded shadow text-sm z-10 w-48 font-normal">
+        <div className="absolute bg-white dark:bg-black border border-gray-300 p-2 rounded shadow text-sm z-10 w-48 font-normal">
           {context}
         </div>
       )}

@@ -141,15 +141,17 @@ const Resume: React.FC = () => {
 
   const renderEducation = (edu: Education) => {
     return (
-      <div className="border-b-2 border-gray-200 py-2">
-        <h3 className="text-xl font-bold">{edu.degree}</h3>
-        <p className="text-md">{edu.school}</p>
+      <div className="py-2 flex justify-between inline-block">
+        <div className="align-middle">
+            <h3 className="text-xl font-bold">{edu.degree}</h3>
+            <p className="text-md">{edu.school}</p>
+        </div>
       </div>
     );
   };
 
   return (
-    <div className="container mx-auto p-10">
+    <div className="container mx-auto p-8 max-w-5xl">
     <div className="relative">
       <h1 className="text-6xl font-bold mb-4 text-center">{resumeData.name}</h1>
       <button className="absolute top-0 right-0 p-2">
@@ -179,9 +181,12 @@ const Resume: React.FC = () => {
         {resumeData.experience.map(renderExperience)}
       </div>
 
-      <div>
-        <h2 className="text-2xl font-bold mb-4">Education</h2>
+      <div className="flex justify-between border-b-2 border-gray-200">
+        <span>
+        <h2 className="text-2xl font-bold mb-4">Education</h2>        
         {resumeData.education.map(renderEducation)}
+        </span>
+        <img className="align-top" src={resumeData.education[0].image} height="150px" width="150px" />
       </div>
     </div>
   );
