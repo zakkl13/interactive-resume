@@ -90,7 +90,7 @@ export interface ExperienceSubDescription {
             subDescriptions: [
               {
                 title: "AWS Application Migration",
-                intro: "Global Top 10 Insturance Client. Migrated legacy enterprise tech stack to AWS",
+                intro: "Global Top 10 Insurance Client. Migrated legacy enterprise tech stack to AWS",
                 bullets: [
                   `Designed {{bold text='AWS ECS'}} architecture to migrate existing containers`,
                   `Designed mature cloud architecture and CI/CD based on {{bold text='AWS CodeDeploy'}} for legacy windows-based Java payment application responsible for processing ~$1bn/year`,
@@ -100,7 +100,7 @@ export interface ExperienceSubDescription {
               },
               {
                 title: "Insurance Web App Refresh",
-                intro: "Global Top 10 Insturance Client. Built framework for co-branded insurance websites.",
+                intro: "Global Top 10 Insurance Client. Built framework for co-branded insurance websites.",
                 bullets: [
                   `Delivered client web app framework; built on an {{bold text='Angular'}} front-end and {{bold text='Node.js'}} backend`,
                   `Implemented headless CMS system to allow buisness users to create arbitrary websites for 100s of insurance partners.`

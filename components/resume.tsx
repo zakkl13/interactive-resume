@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faEnvelope, faCode } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEnvelope, faCode, } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Experience, Education, ExperienceDescription, ExperienceSubDescription, ResumeData } from "@/data/resumeData";
 import { parseFormattedText } from "@/utils/formatter";
