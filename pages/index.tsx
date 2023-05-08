@@ -8,7 +8,7 @@ const ResumePage: React.FC = () => {
     document.title = 'Zakk.IO';
   })
   return (
-    <div className="bg-gradient-to-r from-yellow-200 to-yellow-500 dark:from-yellow-700 dark:to-yellow-900">
+    <div className="bg-gradient-to-r from-yellow-200 to-yellow-500 dark:from-gray-900 dark:to-indigo-900">
       <div className="max-w-5xl mx-auto">
         <HomePage data={homeDefault} />
       </div>

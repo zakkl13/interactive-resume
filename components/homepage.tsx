@@ -57,7 +57,7 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
 
             <div className="bg-white dark:bg-black  rounded-lg p-8 w-full md:w-3/4 mb-4">
                 <h2 className="text-4xl font-semibold mb-4">Quick Links</h2>
-                <ul className=" flex-col flex md:flex-row md:items-center place-content-evenly">
+                <ul className="flex-col flex md:flex-row md:items-center place-content-evenly">
                     {renderLink(faFile, "Resume", data.resume, false)}
                     {renderLink(faLinkedin, "LinkedIn", data.linkedin)}
                     {renderLink(faGithub, "GitHub", data.github)}

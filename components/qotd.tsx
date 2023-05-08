@@ -26,7 +26,10 @@ const Qotd: React.FC = () => {
 
     return (
         <div className="flex flex-col items-center mb-4 w-3/4 text-center">
-            <p className="text-xl">Quote of the Day<span className="text-sm"> (powered by <a href="https://github.com/zakkl13/interactive-resume/blob/main/pages/api/qotd.ts" target="_blank">AI</a>)</span></p>
+            <div className="flex flex-col">
+                <p className="text-xl">Quote of the Day</p>
+                <p className="text-xs"> (powered by <a href="https://github.com/zakkl13/interactive-resume/blob/main/pages/api/qotd.ts" target="_blank">AI</a>)</p>
+            </div>
             {loading ? 
                 <div className="loading"></div> :
                 <p><span className="italic">{qotd.contents}</span> - {qotd.author}</p>
