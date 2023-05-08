@@ -19,7 +19,7 @@ export const homeDefault: HomeData = {
     profilePhoto: "/zakkprofile.jpg",
     photos: ["/hokie.jpg", "/slidingsands.jpg", "/kw.jpg", "/marco.jpg", "/garden-bed.jpg"],
     twitter: "https://twitter.com/zakktech",
-    linkedin: "https://linkedin.com",
-    github: "https://github.com",
+    linkedin: "https://www.linkedin.com/in/zakklefkowits/",
+    github: "https://github.com/zakkl13",
     resume: "/resume"
 }
