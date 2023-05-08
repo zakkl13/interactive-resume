@@ -50,12 +50,12 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
     }
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-yellow-200 to-yellow-500">
+        <div className="flex flex-col items-center justify-center min-h-screen p-4 bg-gradient-to-r from-yellow-200 to-yellow-500 dark:from-yellow-600 dark:to-yellow-800">
             {/* Title and animation */}
-            <h1 className={`text-4xl md:text-6xl font-bold text-black text-center mb-8 ${animatedTitle.length < fullTitle.length ? "blinking-cursor" : ""}`}>{animatedTitle}</h1>
+            <h1 className={`text-4xl md:text-6xl font-bold dark:text-white text-black text-center mb-8 ${animatedTitle.length < fullTitle.length ? "blinking-cursor" : ""}`}>{animatedTitle}</h1>
             <Qotd />
 
-            <div className="bg-white rounded-lg p-8 w-full md:w-3/4 mb-4">
+            <div className="bg-white dark:bg-black  rounded-lg p-8 w-full md:w-3/4 mb-4">
                 <h2 className="text-4xl font-semibold mb-4">Quick Links</h2>
                 <ul className=" flex-col flex md:flex-row md:items-center place-content-evenly">
                     {renderLink(faFile, "Resume", data.resume, false)}
@@ -66,7 +66,7 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
             </div>
 
             {/* About section */}
-            <div className="bg-white rounded-lg p-8 w-full md:w-3/4 mb-10 col-span-2">
+            <div className="bg-white dark:bg-black rounded-lg p-8 w-full md:w-3/4 mb-10 col-span-2">
                 <h2 className="text-4xl font-semibold mb-4">About</h2>
                 <div className="md:flex md:items-center mb-2">
                     <Image key="profilePhoto" className="mr-4" alt="profile pic" width={200} height={200} src={data.profilePhoto}></Image>
