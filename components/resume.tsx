@@ -1,9 +1,10 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faEnvelope, faCode, } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEnvelope, faCode, faHome } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Experience, Education, ExperienceDescription, ExperienceSubDescription, ResumeData } from "@/data/resumeData";
 import { parseFormattedText } from "@/utils/formatter";
+import Link from "next/link";
 
 export interface ResumeProps {
     data: ResumeData
@@ -72,10 +73,17 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
         <FontAwesomeIcon icon={faLinkedin} className="mr-2" />
         <a href={data.linkedin}>LinkedIn</a>
       </div>
-      <div className="flex items-center">
+      <div className="flex items-center mr-4">
         <FontAwesomeIcon icon={faGithub} className="mr-2" />
         <a href={data.github}>GitHub</a>
       </div>
+      <div className="flex items-center mr-4">
+          <FontAwesomeIcon icon={faHome} className="mr-2" />
+          <Link href="/">
+            Zakk.io      
+          </Link>
+      </div>
+
     </div>
     <p className="mb-8">{parseFormattedText(data.summary)}</p>
 
