@@ -68,7 +68,7 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
             {/* About section */}
             <div className="bg-white dark:bg-black rounded-lg p-8 w-full md:w-3/4 mb-10 col-span-2">
                 <h2 className="text-4xl font-semibold mb-4">About</h2>
-                <div className="md:flex md:items-center mb-2 border-b pb-2 border-dashed">
+                <div className="md:flex md:items-center mb-2 border-b pb-2">
                     <Image key="profilePhoto" className="mr-4" alt="profile pic" width={200} height={200} src={data.profilePhoto}></Image>
                     <p className="text-lg leading-relaxed">{data.about}</p>
                 </div>

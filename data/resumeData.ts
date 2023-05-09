@@ -38,7 +38,7 @@ export interface ExperienceSubDescription {
     linkedin: "https://www.linkedin.com/in/zakklefkowits/",
     github: "https://github.com/zakkl13",
     summary: `Software Engineer & Tech Lead at Amazon {{hover text='experienced' context='6 years of professional software development experience'}} in building products at scale to solve business problems and delight customers. 
-              Demonstrated ability to lead teams, solve hard problems, learn quickly and communicate with clarity. Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text='AWS architecture' context='Services include EC2, SQS, DynamoDB, S3'}}, and Java services.`,
+              Demonstrated ability to lead teams, solve hard problems, learn quickly and communicate with clarity. Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text='AWS architecture' context='Services include EC2, ECS, Lambda, SQS, DynamoDB, S3, CodeDeploy'}}, and Java services.`,
     experience: [
       {
         title: "Senior Software Engineer",
@@ -50,7 +50,7 @@ export interface ExperienceSubDescription {
           subDescriptions: [
             {
               title: "Continue Watching Integration",
-              intro: `Built new {{link text='Continue Watching' out='https://www.androidpolice.com/amazon-fire-tv-continue-watching/'}} integration to enable critical customer use case.`,
+              intro: `Built new [{{hover text='confidential' context='Yet-to-be-announced feature coming to a Fire TV near you in the coming months!'}}] integration to enable critical customer use case.`,
               bullets: [
                 `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences.`,
                 `Led development of on-device {{bold text='Rust'}} service to efficiently process data and handle new features on commodity consumer hardware with less than 3MB memory footprint`,
@@ -61,7 +61,7 @@ export interface ExperienceSubDescription {
               title: "Live TV Integration",
               intro: "Improved and operated the existing {{link text='Live TV' out='https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4'}} integration on Fire TV",
               bullets: [
-                `Oversaw launches of 20+ Live TV (e.g., {{link text='DirecTv' out='https://amazonfiretv.blog/fire-tv-launches-new-linear-live-tv-experience-for-directv-stream-subscribers-9d9632e8b518'}}) partners`,
+                `Oversaw launches of 40+ Live TV (e.g., {{link text='DirecTv' out='https://amazonfiretv.blog/fire-tv-launches-new-linear-live-tv-experience-for-directv-stream-subscribers-9d9632e8b518'}}) partners worldwide leading to a 100% increase in Monthly Active Users of the Fire TV Live TV experience from 2020 to 2022`,
                 `Enhanced monitoring capabilities to identify customer-impacting issues in real-time`,
                 `Improved latency by 50% in Live TV voice commands “{{hover text='tune to channel' context='For example, 'Alexa, tune to ABC' '}}” voice command by optimizing {{bold text='Java'}} services stack.`,
                 `Built up developer resources including significant improvements to the {{link text='reference app' out='https://github.com/amzn/ftv-livetv-sample-tv-app'}} for developers as well as writing a {{link text='step-by-step integration guide' out='https://developer.amazon.com/docs/fire-tv/linear-tv-integration-guide-overview.html'}}.`
