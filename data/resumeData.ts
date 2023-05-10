@@ -49,8 +49,8 @@ export interface ExperienceSubDescription {
                   Promoted to Senior Engineer in Q4 2022.`,
           subDescriptions: [
             {
-              title: "Continue Watching Integration",
-              intro: `Built new [{{hover text='confidential' context='Yet-to-be-announced feature coming to a Fire TV near you in the coming months!'}}] integration to enable critical customer use case.`,
+              title: "Building New (Yet-to-be-Announced) Integration",
+              intro: `Built new [{{hover text='confidential' context='An exciting feature coming to a Fire TV near you in the coming months!'}}] integration to enable critical customer use case.`,
               bullets: [
                 `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences.`,
                 `Led development of on-device {{bold text='Rust'}} service to efficiently process data and handle new features on commodity consumer hardware with less than 3MB memory footprint`,
