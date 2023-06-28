@@ -4,6 +4,7 @@ export interface ResumeData {
   email: string,
   linkedin: string,
   summary: string,
+  impactBullets: string[],
   experience: Experience[],
   education: Education[]
 }
@@ -37,8 +38,11 @@ export interface ExperienceSubDescription {
     email: "zlefkowits@gmail.com",
     linkedin: "https://www.linkedin.com/in/zakklefkowits/",
     github: "https://github.com/zakkl13",
-    summary: `Software Engineer & Tech Lead at Amazon {{hover text='experienced' context='6 years of professional software development experience'}} in building products at scale to solve business problems and delight customers. 
-              Demonstrated ability to lead teams, solve hard problems, learn quickly and communicate with clarity. Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text='AWS architecture' context='Services include EC2, ECS, Lambda, SQS, DynamoDB, S3, CodeDeploy'}}, and Java services.`,
+    summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} {{hover text='experienced' context='6 years of professional software development experience'}} in building products at scale to solve business problems and delight customers. {{bold text='Trusted with ownership of code deployed to 100+ million devices'}}.
+              Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text='AWS architecture' context='Services include EC2, ECS, Lambda, SQS, DynamoDB, S3, CodeDeploy'}}, and Java services.`,
+    impactBullets: [
+      ""
+    ],
     experience: [
       {
         title: "Senior Software Engineer",
@@ -53,7 +57,7 @@ export interface ExperienceSubDescription {
               intro: `Built new [{{hover text='confidential' context='An exciting feature coming to a Fire TV near you in the coming months!'}}] integration to enable critical customer use case.`,
               bullets: [
                 `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences.`,
-                `Led development of on-device {{bold text='Rust'}} service to efficiently process data and handle new features on commodity consumer hardware with less than 3MB memory footprint`,
+                `Shipped new on-device {{bold text='Rust'}} service to over 100 million devices. Runs on commodity consumer hardware with less than 5MB memory footprint`,
                 `Built a cost-efficient distributed backend system on {{bold text='AWS'}} to process up to 300,000 transactions per second while handling sensitive user and partner data`,
               ]
             },

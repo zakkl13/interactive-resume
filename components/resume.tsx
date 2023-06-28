@@ -63,21 +63,21 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
       </div>
     </div>
     <div className="flex justify-center mb-8">
-      <div className="flex items-center mr-4">
+      <div className="flex items-center mr-2 md:mr-4">
         <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
         <a className="flex items-center" href="mailto:zlefkowits@gmail.com">
             <p>Email</p>
         </a>   
       </div>
-      <div className="flex items-center mr-4">
+      <div className="flex items-center mr-2 md:mr-4">
         <FontAwesomeIcon icon={faLinkedin} className="mr-2" />
         <a href={data.linkedin}>LinkedIn</a>
       </div>
-      <div className="flex items-center mr-4">
+      <div className="flex items-center mr-2 md:mr-4">
         <FontAwesomeIcon icon={faGithub} className="mr-2" />
         <a href={data.github}>GitHub</a>
       </div>
-      <div className="flex items-center mr-4">
+      <div className="flex items-center mr-2 md:mr-4">
           <FontAwesomeIcon icon={faHome} className="mr-2" />
           <Link href="/">
             Zakk.io      
