@@ -1,8 +1,9 @@
 import HoverableText from "@/components/hoverableText";
+import React from 'react';
 
-export const parseFormattedText = (input: string): Array<string | JSX.Element> => {
+export const parseFormattedText = (input: string): Array<string | React.JSX.Element> => {
     const regex = /{{(hover|bold|link) text='(.*?)'( context='(.*?)')?( out='(.*?)')?}}/g;
-    const parts: Array<string | JSX.Element> = [];
+    const parts: Array<string | React.JSX.Element> = [];
     let lastIndex = 0;
     let match;
   

@@ -1,11 +1,10 @@
 import { Quote, QuoteOfTheDayResponse } from '@/components/model';
 import { NextApiRequest, NextApiResponse } from 'next';
+import OpenAI from "openai";
 
-import { Configuration, OpenAIApi } from "openai";
-const configuration = new Configuration({
+const openai = new OpenAI({
     apiKey: process.env.OPENAI_API_KEY,
 });
-const openai = new OpenAIApi(configuration);
 
 const defaultQuote: Quote = {
     contents: "Don't go through life, grow through life.",
@@ -18,7 +17,7 @@ function parseQuote(raw: string): Quote | undefined {
     const matches = raw.match(regex);
     
     if (matches) {
-      const quote = matches[1];
+      const quote = matches[1].replace(/^"|"$/g, ''); // Remove surrounding quotes if present
       const author = matches[2];
     
       return {
@@ -27,6 +26,14 @@ function parseQuote(raw: string): Quote | undefined {
       }
     } else {
       console.log(`Failed to parse: ${raw}`);
+      // Fallback: try to split by " - " if regex fails
+      const parts = raw.split(" - ");
+      if (parts.length >= 2) {
+          return {
+              contents: parts[0].replace(/^"|"$/g, ''),
+              author: parts[parts.length - 1]
+          }
+      }
       return undefined;
     }   
 }
@@ -52,16 +59,24 @@ export default async function handler(
 ) {
   const qprompt: string = qotdPrompt(["inspirational", "motivational", "funny"]);
   
-  const completion = await openai.createCompletion({
-    model: "text-davinci-003",
-    prompt: qprompt,
-    max_tokens: 200,
-    temperature: 0.7,
-  });
+  try {
+      const completion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [{ role: "user", content: qprompt }],
+        max_tokens: 200,
+        temperature: 0.7,
+      });
 
-  const qParsed = parseQuote(completion.data.choices[0].text);
+      const content = completion.choices[0].message.content;
+      const qParsed = content ? parseQuote(content) : undefined;
 
-  response.status(200).json({
-    quote: qParsed ?? defaultQuote
-  });
+      response.status(200).json({
+        quote: qParsed ?? defaultQuote
+      });
+  } catch (error) {
+      console.error("OpenAI API Error:", error);
+      response.status(200).json({
+          quote: defaultQuote
+      });
+  }
 }
