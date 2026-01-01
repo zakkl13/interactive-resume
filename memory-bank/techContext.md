@@ -15,11 +15,11 @@
 - **Linting**: ESLint
 - **Type Checking**: TypeScript (`tsconfig.json`)
 
-## Current Version Snapshot (as of init)
-- Next.js: 13.2.4
-- React: 18.2.0
-- Tailwind CSS: 3.3.2
-- TypeScript: 5.0.4
+## Current Version Snapshot
+- Next.js: ^16.1.1
+- React: ^19.2.3
+- Tailwind CSS: ^3.4.19
+- TypeScript: ^5.9.3
 
 ## Constraints
 - **Vercel Deployment**: Must adhere to Vercel's build and deployment processes.

@@ -2,7 +2,7 @@
 
 ## Status
 - **Memory Bank**: Initialized.
-- **Dependencies**: Outdated (Next.js 13.x).
+- **Dependencies**: Updated (Next.js 16.x).
 - **Content**: Needs updates.
 - **Visuals**: Functional but needs flair.
 
@@ -13,10 +13,10 @@
 - Data separation (`data/*.ts`).
 
 ## What's Left to Build
-- [ ] **Dependency Update**: Upgrade to latest Next.js/React/Tailwind.
+- [x] **Dependency Update**: Upgrade to latest Next.js/React/Tailwind.
 - [ ] **Content Refresh**: Update resume data and personal info.
 - [ ] **Visual Overhaul**: Implement new design elements and animations.
 - [ ] **Code Cleanup**: Remove any unused legacy code after updates.
 
 ## Known Issues
-- Project is 3 years out of date; expect potential breaking changes during dependency updates.
+- None currently identified.

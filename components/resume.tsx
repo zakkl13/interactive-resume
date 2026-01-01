@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDownload, faEnvelope, faCode, faHome } from "@fortawesome/free-solid-svg-icons";
+import { faDownload, faEnvelope, faCode, faHome, faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Experience, Education, ExperienceDescription, ExperienceSubDescription, ResumeData } from "@/data/resumeData";
 import { parseFormattedText } from "@/utils/formatter";
@@ -82,6 +82,10 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
           <Link href="/">
             Zakk.io      
           </Link>
+      </div>
+      <div className="flex items-center mr-2 md:mr-4">
+          <FontAwesomeIcon icon={faLocationDot} className="mr-2" />
+          <p>{parseFormattedText(data.location)}</p>
       </div>
 
     </div>

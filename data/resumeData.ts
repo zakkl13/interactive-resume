@@ -1,5 +1,6 @@
 export interface ResumeData {
   name: string,
+  location: string,
   github: string,
   email: string,
   linkedin: string,
@@ -35,6 +36,7 @@ export interface ExperienceSubDescription {
   
   export const resumeData: ResumeData = {
     name: "Zakk Lefkowits",
+    location: "{{hover text='EST' context='Richmond, VA'}}",
     email: "zlefkowits@gmail.com",
     linkedin: "https://www.linkedin.com/in/zakklefkowits/",
     github: "https://github.com/zakkl13",
