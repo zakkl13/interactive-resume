@@ -14,6 +14,8 @@
 
 ## What's Left to Build
 - [x] **Dependency Update**: Upgrade to latest Next.js/React/Tailwind.
+- [x] **Resume Skins Architecture**: Abstracted Resume component to support pluggable skins.
+- [x] **Timeline View**: Implemented a basic timeline visualization for the resume.
 - [ ] **Content Refresh**: Update resume data and personal info.
 - [ ] **Visual Overhaul**: Implement new design elements and animations.
 - [ ] **Code Cleanup**: Remove any unused legacy code after updates.
