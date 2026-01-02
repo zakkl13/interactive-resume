@@ -122,7 +122,7 @@ const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
 
                                                 {/* Role Summary - Always visible */}
                                                 {exp.roleSummary && (
-                                                    <div className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed border-l-4 border-slate-200 dark:border-slate-700 pl-4 py-1">
+                                                    <div className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed pl-4 py-1">
                                                         {parseFormattedText(exp.roleSummary)}
                                                     </div>
                                                 )}
