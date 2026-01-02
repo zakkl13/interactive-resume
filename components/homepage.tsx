@@ -61,7 +61,6 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
                     {renderLink(faFile, "Resume", data.resume, false)}
                     {renderLink(faLinkedin, "LinkedIn", data.linkedin)}
                     {renderLink(faGithub, "GitHub", data.github)}
-                    {renderLink(faTwitter, "Twitter", data.twitter)}
                 </ul>
             </div>
 

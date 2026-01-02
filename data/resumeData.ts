@@ -37,7 +37,7 @@ export const resumeData: ResumeData = {
   linkedin: "https://www.linkedin.com/in/zakklefkowits/",
   github: "https://github.com/zakkl13",
   summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} {{hover text='experienced' context='9 years of professional software development experience'}} in building products at scale to solve business problems and delight customers. {{bold text='Trusted with ownership of code deployed to 100+ million devices'}}. Adept in {{bold text='Agentic AI'}} engineering workflows to accelerate delivery.
-              Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text='AWS architecture' context='Services include EC2, ECS, Lambda, SQS, DynamoDB, S3, CodeDeploy'}}, and building dstributed back-end systems.`,
+              Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text='AWS architecture' context='Services include EC2, ECS, Lambda, SQS, DynamoDB, S3, CodeDeploy'}}, and building distributed back-end systems.`,
   impactBullets: [
     ""
   ],

@@ -3,7 +3,6 @@ export interface HomeData {
     about: string,
     profilePhoto: string,
     photos: string[],
-    twitter: string,
     linkedin: string,
     github: string,
     resume: string
@@ -14,12 +13,9 @@ export const homeDefault: HomeData = {
     about: `
     I am a Software Engineer living in Richmond, Virginia (RVA).
 
-    When I'm not shipping code I enjoy home improvement projects, gardening, rock climbing, cooking, travel and spending time with my wife and dog Hokie. 
-    
-    Oh and also generally being a nuisance on Twitter.`,
+    When I'm not shipping code I enjoy home improvement projects, dadding, gardening, sports, cooking, travel and spending time with my wife, daughter and dog, Hokie.`,
     profilePhoto: "/zakkprofile.jpg",
     photos: ["/hokie.jpg", "/slidingsands.jpg", "/kw.jpg", "/marco.jpg", "/garden-bed.jpg", "/hokieandme.jpg", "/dr.jpg", "/kayak.jpg"],
-    twitter: "https://twitter.com/zakktech",
     linkedin: "https://www.linkedin.com/in/zakklefkowits/",
     github: "https://github.com/zakkl13",
     resume: "/resume"
