@@ -4,6 +4,7 @@
 - **Framework**: Next.js
 - **UI Library**: React
 - **Styling**: Tailwind CSS, PostCSS, Autoprefixer
+- **Animations**: Framer Motion (`framer-motion`)
 - **Language**: TypeScript
 - **Icons**: FontAwesome (`@fortawesome/react-fontawesome`)
 - **PDF Generation**: `pdf-lib`, `file-saver`

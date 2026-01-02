@@ -1,4 +1,6 @@
+import BentoResume from "./BentoResume";
 import ClassicResume from "./ClassicResume";
+import GitResume from "./GitResume";
 import TimelineResume from "./TimelineResume";
 import { ResumeSkinDefinition } from "./types";
 
@@ -12,7 +14,17 @@ export const RESUME_SKINS: Record<string, ResumeSkinDefinition> = {
         id: "timeline",
         name: "Timeline",
         component: TimelineResume
+    },
+    bento: {
+        id: "bento",
+        name: "Bento",
+        component: BentoResume
+    },
+    git: {
+        id: "git",
+        name: "Git Log",
+        component: GitResume
     }
 };
 
-export const DEFAULT_SKIN = RESUME_SKINS.classic;
+export const DEFAULT_SKIN = RESUME_SKINS.timeline;

@@ -1,103 +1,202 @@
-import React from "react";
+import React, { useState } from "react";
 import { ResumeSkinProps } from "./types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCode, faEnvelope, faHome, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faHome, faLocationDot, faChevronDown, faChevronUp, faBriefcase, faGraduationCap, faUser, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import { parseFormattedText } from "@/utils/formatter";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import SubDescriptionItem from "./SubDescriptionItem";
 
 const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
+    const [expandedExperience, setExpandedExperience] = useState<number | null>(0); // First one open by default
+
+    const toggleExperience = (index: number) => {
+        setExpandedExperience(expandedExperience === index ? null : index);
+    };
+
+    const containerVariants: Variants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const itemVariants: Variants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: { type: "spring", stiffness: 100 }
+        }
+    };
+
     return (
-        <div className="container mx-auto p-8 max-w-5xl bg-slate-50 dark:bg-slate-900 min-h-screen">
-            {/* Header Section (Similar to Classic but simplified) */}
-            <div className="relative mb-12 text-center">
-                <h1 className="text-5xl font-bold mb-4">{data.name}</h1>
-                <div className="flex justify-center space-x-6 text-xl">
-                    <a href={data.linkedin} className="hover:text-blue-600 transition-colors"><FontAwesomeIcon icon={faLinkedin} /></a>
-                    <a href={data.github} className="hover:text-gray-600 transition-colors"><FontAwesomeIcon icon={faGithub} /></a>
-                    <a href="mailto:zlefkowits@gmail.com" className="hover:text-red-500 transition-colors"><FontAwesomeIcon icon={faEnvelope} /></a>
-                    <Link href="/" className="hover:text-green-500 transition-colors"><FontAwesomeIcon icon={faHome} /></Link>
-                </div>
-                <div className="mt-4 flex justify-center items-center text-gray-600 dark:text-gray-400">
-                    <FontAwesomeIcon icon={faLocationDot} className="mr-2" />
-                    <span>{parseFormattedText(data.location)}</span>
-                </div>
-            </div>
-
-            {/* Timeline Container */}
-            <div className="relative border-l-4 border-blue-500 ml-4 md:ml-8 pl-8 space-y-12">
-                
-                {/* Summary Node */}
-                <div className="relative">
-                    <div className="absolute -left-12 top-0 h-8 w-8 bg-blue-500 rounded-full border-4 border-white dark:border-gray-800"></div>
-                    <h2 className="text-2xl font-bold mb-2">Summary</h2>
-                    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md">
-                        <p>{parseFormattedText(data.summary)}</p>
+        <div className="bg-[#FDFBF7] dark:bg-slate-900 text-slate-800 dark:text-slate-200 min-h-screen font-sans selection:bg-teal-100 selection:text-teal-900 dark:selection:bg-teal-900 dark:selection:text-teal-100 transition-colors duration-300">
+            <motion.div 
+                className="container mx-auto p-4 md:p-8 max-w-4xl"
+                initial="hidden"
+                animate="visible"
+                variants={containerVariants}
+            >
+                {/* Header */}
+                <motion.header variants={itemVariants} className="text-center mb-16 pt-8">
+                    <h1 className="text-5xl md:text-7xl font-bold mb-4 bg-gradient-to-r from-teal-700 to-slate-900 dark:to-slate-100 bg-clip-text text-transparent">
+                        {data.name}
+                    </h1>
+                    <div className="flex flex-wrap justify-center gap-6 text-xl text-slate-500 dark:text-slate-400">
+                        <motion.a whileHover={{ scale: 1.2, color: "#0077b5" }} href={data.linkedin}>
+                            <FontAwesomeIcon icon={faLinkedin} />
+                        </motion.a>
+                        <motion.a whileHover={{ scale: 1.2, color: "#333" }} href={data.github} className="hover:text-[#333] dark:hover:text-white">
+                            <FontAwesomeIcon icon={faGithub} />
+                        </motion.a>
+                        <motion.a whileHover={{ scale: 1.2, color: "#ef4444" }} href={`mailto:${data.email}`}>
+                            <FontAwesomeIcon icon={faEnvelope} />
+                        </motion.a>
+                        <motion.div whileHover={{ scale: 1.2, color: "#059669" }}>
+                            <Link href="/">
+                                <FontAwesomeIcon icon={faHome} />
+                            </Link>
+                        </motion.div>
                     </div>
-                </div>
+                    <div className="mt-4 flex justify-center items-center text-sm text-slate-500 dark:text-slate-400 font-mono">
+                        <FontAwesomeIcon icon={faLocationDot} className="mr-2" />
+                        <span>{parseFormattedText(data.location)}</span>
+                    </div>
+                </motion.header>
 
-                {/* Experience Nodes */}
-                <div className="relative">
-                    <div className="absolute -left-12 top-0 h-8 w-8 bg-blue-500 rounded-full border-4 border-white dark:border-gray-800"></div>
-                    <h2 className="text-2xl font-bold mb-6">Experience</h2>
-                    
-                    <div className="space-y-12">
-                        {data.experience.map((exp, idx) => (
-                            <div key={idx} className="relative">
-                                {/* Connector Line for items */}
-                                <div className="absolute -left-10 top-2 h-4 w-4 bg-gray-300 rounded-full border-2 border-white dark:border-gray-800"></div>
-                                
-                                <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow border-l-4 border-blue-400">
-                                    <div className="flex flex-col md:flex-row justify-between mb-4">
-                                        <h3 className="text-xl font-bold">{exp.title}</h3>
-                                        <span className="text-blue-600 font-semibold">{exp.duration}</span>
-                                    </div>
-                                    <div className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-4">
-                                        {parseFormattedText(exp.company)}
-                                    </div>
-                                    
-                                    <div className="space-y-4">
-                                        {exp.descriptions.map((desc, dIdx) => (
-                                            <div key={dIdx}>
-                                                <p className="mb-2">{desc.intro}</p>
-                                                {desc.subDescriptions.map((sub, sIdx) => (
-                                                    <div key={sIdx} className="ml-4 mt-2 border-l-2 border-gray-200 pl-4">
-                                                        <h4 className="font-semibold">{sub.title}</h4>
-                                                        <p className="text-sm italic mb-2">{sub.intro}</p>
-                                                        <ul className="list-disc ml-4 text-sm space-y-1">
-                                                            {sub.bullets.map((bullet, bIdx) => (
-                                                                <li key={bIdx}>{parseFormattedText(bullet)}</li>
-                                                            ))}
-                                                        </ul>
+                {/* Summary Section - Detached from timeline */}
+                <motion.div variants={itemVariants} className="mb-12 max-w-4xl mx-auto">
+                    <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                        {parseFormattedText(data.summary)}
+                    </div>
+                </motion.div>
+
+                {/* Timeline */}
+                <div className="relative pl-8 md:pl-12">
+                    {/* Vertical Line */}
+                    <div className="absolute left-4 md:left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-teal-600 via-slate-300 dark:via-slate-700 to-transparent opacity-40"></div>
+
+                    {/* Experience Section */}
+                    <div className="mb-16">
+                        <motion.div variants={itemVariants} className="flex items-center gap-3 mb-8">
+                            <div className="absolute -left-[22px] md:-left-[30px] w-4 h-4 bg-[#FDFBF7] dark:bg-slate-900 border-2 border-teal-600 rounded-full z-10"></div>
+                            <h2 className="text-2xl font-bold text-teal-800 dark:text-teal-400 flex items-center gap-2">
+                                <FontAwesomeIcon icon={faBriefcase} /> Experience
+                            </h2>
+                        </motion.div>
+
+                        <div className="space-y-12">
+                            {data.experience.map((exp, idx) => (
+                                <motion.div 
+                                    key={idx} 
+                                    variants={itemVariants} 
+                                    className="relative"
+                                >
+                                    {/* Dot */}
+                                    <div 
+                                        className={`absolute -left-[22px] md:-left-[30px] top-6 w-4 h-4 rounded-full z-10 cursor-pointer transition-all duration-300 ${expandedExperience === idx ? 'bg-teal-600 scale-125 shadow-[0_0_15px_rgba(13,148,136,0.6)]' : 'bg-[#FDFBF7] dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 hover:border-teal-500'}`}
+                                        onClick={() => toggleExperience(idx)}
+                                    ></div>
+
+                                    {/* Content */}
+                                    <div className="w-full">
+                                        <div 
+                                            className={`bg-white dark:bg-slate-800 rounded-xl border ${expandedExperience === idx ? 'border-teal-200 dark:border-teal-800 shadow-md shadow-teal-50 dark:shadow-teal-900/20' : 'border-slate-200 dark:border-slate-700 shadow-sm'} overflow-hidden cursor-pointer transition-all`}
+                                            onClick={() => toggleExperience(idx)}
+                                        >
+                                            <div className="p-6 pb-2">
+                                                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
+                                                    <div>
+                                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{exp.title}</h3>
+                                                        <div className="text-slate-500 dark:text-slate-400 font-medium mb-1">{parseFormattedText(exp.company)}</div>
                                                     </div>
-                                                ))}
+                                                    <div className="text-teal-600 dark:text-teal-400 font-mono text-sm mt-1 md:mt-0 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full inline-block md:block w-fit whitespace-nowrap">
+                                                        {exp.duration}
+                                                    </div>
+                                                </div>
+
+                                                {/* Role Summary - Always visible */}
+                                                {exp.roleSummary && (
+                                                    <div className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed border-l-4 border-slate-200 dark:border-slate-700 pl-4 py-1">
+                                                        {parseFormattedText(exp.roleSummary)}
+                                                    </div>
+                                                )}
+
+                                                <div className="flex justify-between items-center mb-1">
+                                                    <span className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider opacity-0">Highlights</span>
+                                                    <FontAwesomeIcon icon={expandedExperience === idx ? faChevronUp : faChevronDown} className="text-slate-400 dark:text-slate-500" />
+                                                </div>
                                             </div>
-                                        ))}
+                                            
+                                            <AnimatePresence>
+                                                {expandedExperience === idx && (
+                                                    <motion.div
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: "auto", opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        transition={{ duration: 0.3 }}
+                                                    >
+                                                        <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-700 relative">
+                                                            {/* Nested Timeline Line */}
+                                                            <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-slate-200 dark:bg-slate-700"></div>
+
+                                                            <div className="space-y-8 mt-6">
+                                                                {exp.projects.map((proj, pIdx) => (
+                                                                    <SubDescriptionItem key={pIdx} sub={proj} />
+                                                                ))}
+                                                            </div>
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        ))}
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Education Section */}
+                    <div className="mb-16">
+                        <motion.div variants={itemVariants} className="flex items-center gap-3 mb-8">
+                            <div className="absolute -left-[22px] md:-left-[30px] w-4 h-4 bg-[#FDFBF7] dark:bg-slate-900 border-2 border-teal-600 rounded-full z-10"></div>
+                            <h2 className="text-2xl font-bold text-teal-800 dark:text-teal-400 flex items-center gap-2">
+                                <FontAwesomeIcon icon={faGraduationCap} /> Education
+                            </h2>
+                        </motion.div>
+
+                        <div className="space-y-8">
+                            {data.education.map((edu, idx) => (
+                                <motion.div 
+                                    key={idx} 
+                                    variants={itemVariants} 
+                                    className="relative"
+                                >
+                                    {/* Dot */}
+                                    <div className="absolute -left-[22px] md:-left-[30px] top-6 w-4 h-4 bg-[#FDFBF7] dark:bg-slate-900 border-2 border-teal-600 rounded-full z-10"></div>
+                                    
+                                    <div className="bg-white dark:bg-slate-800 w-full p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-teal-200 dark:hover:border-teal-800 shadow-sm transition-colors">
+                                        <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
+                                            <div className="w-16 h-16 bg-slate-50 dark:bg-slate-700 rounded-lg p-2 flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-600">
+                                                <img src={edu.image} alt={edu.school} className="max-w-full max-h-full object-contain" />
+                                            </div>
+                                            <div className="text-center md:text-left">
+                                                <h3 className="text-xl font-bold text-slate-900 dark:text-white">{edu.degree}</h3>
+                                                <p className="text-teal-700 dark:text-teal-400">{edu.school}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-
-                {/* Education Node */}
-                <div className="relative">
-                    <div className="absolute -left-12 top-0 h-8 w-8 bg-blue-500 rounded-full border-4 border-white dark:border-gray-800"></div>
-                    <h2 className="text-2xl font-bold mb-6">Education</h2>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {data.education.map((edu, idx) => (
-                            <div key={idx} className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md flex items-center space-x-4">
-                                <img src={edu.image} alt={edu.school} className="h-16 w-16 object-contain" />
-                                <div>
-                                    <h3 className="font-bold">{edu.degree}</h3>
-                                    <p className="text-sm text-gray-600 dark:text-gray-400">{edu.school}</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-
-            </div>
+            </motion.div>
         </div>
     );
 };

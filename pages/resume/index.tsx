@@ -1,13 +1,37 @@
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { resumeData } from "@/data/resumeData";
 import { DEFAULT_SKIN, RESUME_SKINS } from "@/components/skins";
 
 const ResumePage: React.FC = () => {
+  const router = useRouter();
   const [currentSkinId, setCurrentSkinId] = useState(DEFAULT_SKIN.id);
+
+  useEffect(() => {
+    if (router.isReady) {
+      const skinParam = router.query.s;
+      if (typeof skinParam === 'string' && RESUME_SKINS[skinParam]) {
+        setCurrentSkinId(skinParam);
+      } else {
+        // Fallback to default if param is missing or invalid
+        // logic: Only reset if we are ensuring URL dictates state. 
+        // If we want /resume to be default, we can set it here.
+        // But initial state is already DEFAULT_SKIN.id.
+      }
+    }
+  }, [router.isReady, router.query.s]);
 
   useEffect(() => {
     document.title = 'Zakk\'s Resume';
   });
+
+  const handleSkinChange = (skinId: string) => {
+    setCurrentSkinId(skinId);
+    router.push({
+      pathname: router.pathname,
+      query: { ...router.query, s: skinId },
+    }, undefined, { shallow: true });
+  };
 
   const CurrentSkinComponent = RESUME_SKINS[currentSkinId]?.component || DEFAULT_SKIN.component;
 
@@ -18,7 +42,7 @@ const ResumePage: React.FC = () => {
         <label className="text-sm font-semibold mr-2 text-gray-700 dark:text-gray-300">View:</label>
         <select 
           value={currentSkinId} 
-          onChange={(e) => setCurrentSkinId(e.target.value)}
+          onChange={(e) => handleSkinChange(e.target.value)}
           className="text-sm bg-transparent border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-gray-800 dark:text-white focus:outline-none focus:border-blue-500"
         >
           {Object.values(RESUME_SKINS).map(skin => (
