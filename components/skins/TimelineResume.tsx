@@ -88,7 +88,7 @@ const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
                             <h3 className="text-sm uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-3 flex items-center gap-2">
                                 <FontAwesomeIcon icon={faCode} /> Skills
                             </h3>
-                            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
                                 {data.skills && data.skills.map((skill, idx) => (
                                     <div key={idx}>
                                         <h4 className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase mb-1.5">{skill.category}</h4>

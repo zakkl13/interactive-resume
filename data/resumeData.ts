@@ -42,16 +42,27 @@ export const resumeData: ResumeData = {
   email: "zlefkowits@gmail.com",
   linkedin: "https://www.linkedin.com/in/zakklefkowits/",
   github: "https://github.com/zakkl13",
-  summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} building distributed systems at scale to solve business problems and delight customers. {{bold text='Owner of core services deployed to 100+ million devices'}}. Evangelist for {{bold text='AI-augmented engineering'}}, leveraging agentic coding tools to multiply developer velocity and accelerate delivery cycles. Skilled in System Design, Rust, Android, Web Development, Data Engineering, {{hover text='AWS architecture' context='Services include EC2, ECS, Lambda, SQS, DynamoDB, S3, CodeDeploy'}}, and building distributed back-end systems.`,
+  summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} building distributed systems at scale to solve business problems and delight customers. 9 years of professional software development experience. {{bold text='Owner of core services deployed to 100+ million devices'}}. Evangelist for {{bold text='AI-augmented engineering'}}, leveraging agentic coding tools to multiply developer velocity and accelerate delivery cycles.`,
   skills: [
     {
-      category: "Languages",
-      items: ["Rust", "Java", "Kotlin", "TypeScript", "Python", "SQL"]
+      category: "Languages & Technologies",
+      items: [
+        "Rust", 
+        "Java", 
+        "Kotlin", 
+        "TypeScript", 
+        "Python", 
+        "SQL",
+        "Android",
+        "Spring Java",
+        "Apache Spark",
+        "Rocks DB"
+      ]
     },
     {
       category: "AWS, Cloud & Infrastructure",
       items: [
-        "EC2", 
+        "EC2",
         "ECS",
         "Lambda",
         "DynamoDB",
@@ -65,29 +76,14 @@ export const resumeData: ResumeData = {
       ]
     },
     {
-      category: "Platforms", 
-      items: [
-        "Android",
-        "Spring Java",
-        "Apache Spark",
-        "RocksDB"
-      ]
-    },
-    {
-      category: "Architecture & Core Competencies", // The home for your high-level skills
+      category: "Architecture & Core Competencies",
       items: [
         "System Design",
         "Distributed Systems",
-        "Agentic Workflow Automation", 
-        "Data Engineering"
-      ]
-    },
-    {
-      category: "Dev Tools",
-      items: [
-        "Cline",
-        "Gemini CLI",
-        "Kiro CLI"
+        "Data Engineering",
+        "Mobile-Cloud Architecture",
+        "Agentic Workflow Automation",
+        "AI-assisted Engineering"
       ]
     }
   ],
@@ -101,17 +97,17 @@ export const resumeData: ResumeData = {
         {
           title: "Fire TV Catalog Data Enrichment",
           intro: `Leveraged LLM and classic ML techniques to match and enrich Fire TV Catalog data to build rich customer experiences`,
-          techStack: "Incremental data streaming platform,AWS Bedrock,Apache Spark",
+          techStack: "Data Engineering,AWS Bedrock,Apache Spark",
           bullets: [
             `Designed pipeline to assess content genres with an LLM in Catalog graph data model`,
-            'Built evaluation and A/B testing frameworks for working with non-deterministic outputs from LLMs',
-            `Enabled cost effective LLM inference mechanism with tight cost controls`
+            `Architected cost-sensitive LLM inference layer, achieving token-limited `,
+            'Built evaluation and A/B testing frameworks for working with non-deterministic outputs from LLMs'
           ]
         },
         {
           title: "Building Fire TV Watch Activity Integration",
           intro: `Built new integration with streaming apps to capture customer watch activity to create a Continue Watching row and personalized experiences.`,
-          techStack: "Rust, Android, Java Services",
+          techStack: "Mobile-Cloud Architecture, Rust, Android, Java Services",
           bullets: [
             `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences.`,
             `Authored the SDK and {{link text='integration documentation' out='https://developer.amazon.com/docs/fire-tv/get-started-with-firetv-integration-sdk.html'}}`,
@@ -122,7 +118,7 @@ export const resumeData: ResumeData = {
         {
           title: "Live TV Integration",
           intro: "Improved and operated the existing {{link text='Live TV' out='https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4'}} integration on Fire TV",
-          techStack: "Java Services, Android (Kotlin and Java)",
+          techStack: "Mobile-Cloud Architecture, Java Services, Android",
           bullets: [
             `Scaled platform capabilities to support launches of 40+ Live TV (e.g., {{link text='DirecTv' out='https://amazonfiretv.blog/fire-tv-launches-new-linear-live-tv-experience-for-directv-stream-subscribers-9d9632e8b518'}}) partners worldwide leading to a 100% increase in Monthly Active Users of the Fire TV Live TV experience from 2020 to 2023`,
             `Enhanced monitoring capabilities to identify customer-impacting issues in real-time`,
@@ -177,7 +173,6 @@ export const resumeData: ResumeData = {
       school: "Virginia Polytechnic Institute and State University; Blacksburg, VA; Cum Laude",
       degree: "Bachelor of Science, Computer Science, Mathematics Minor: May 2017",
       image: "/vt.png"
-    },
-    // More education objects...
+    }
   ],
 };

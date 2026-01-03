@@ -1,4 +1,3 @@
-import BentoResume from "./BentoResume";
 import ClassicResume from "./ClassicResume";
 import GitResume from "./GitResume";
 import TimelineResume from "./TimelineResume";

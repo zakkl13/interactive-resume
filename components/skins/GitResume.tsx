@@ -109,7 +109,7 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
                         Last login: {new Date().toDateString()} on ttys001
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-[#58a6ff] mb-4">
-                        <span className="text-gray-400 dark:text-[#8b949e]">$</span> git log --graph --oneline --decorate
+                        <span className="text-gray-400 dark:text-[#8b949e]">$</span> git log --graph --decorate
                     </h1>
                     
                     <div className="flex flex-wrap gap-6 mt-6 text-gray-500 dark:text-[#8b949e]">
@@ -150,14 +150,14 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
                         {/* Skills Box */}
                         <div className="p-4 bg-gray-50 dark:bg-[#161b22] border border-gray-200 dark:border-[#30363d] rounded-md text-gray-800 dark:text-[#c9d1d9]">
                              <div className="flex justify-between items-center mb-2 border-b border-gray-200 dark:border-[#30363d] pb-2">
-                                <span className="text-xs text-gray-500 dark:text-[#8b949e]">package.json</span>
+                                <span className="text-xs text-gray-500 dark:text-[#8b949e]">skills.json</span>
                                 <div className="flex gap-2">
                                     <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
                                     <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
                                     <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
                                 </div>
                             </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs font-mono">
                                 {data.skills && data.skills.map((skill, idx) => (
                                     <div key={idx}>
                                         <div className="text-red-600 dark:text-[#ff7b72] mb-1">"{skill.category}": [</div>

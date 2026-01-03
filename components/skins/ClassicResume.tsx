@@ -61,7 +61,7 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
 
   const renderSkills = (skill: Skill, idx: number) => {
     return (
-      <div key={idx} className="mb-4">
+      <div key={idx} className="mb-3">
         <h3 className="text-lg font-bold mb-2">{skill.category}</h3>
         <div className="flex flex-wrap gap-2">
             {skill.items.map((item, i) => (
@@ -117,7 +117,7 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
       {data.skills && data.skills.length > 0 && (
         <div className="mb-8 border-b-2 border-gray-200 dark:border-gray-700 pb-8">
             <h2 className="text-2xl font-bold mb-4">Skills</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {data.skills.map((skill, i) => renderSkills(skill, i))}
             </div>
         </div>
