@@ -47,11 +47,11 @@ export const resumeData: ResumeData = {
     {
       category: "Languages & Technologies",
       items: [
-        "Rust", 
-        "Java", 
-        "Kotlin", 
-        "TypeScript", 
-        "Python", 
+        "Rust",
+        "Java",
+        "Kotlin",
+        "TypeScript",
+        "Python",
         "SQL",
         "Android",
         "Spring Java",
@@ -96,21 +96,20 @@ export const resumeData: ResumeData = {
       projects: [
         {
           title: "Fire TV Catalog Data Enrichment",
-          intro: `Leveraged LLM and classic ML techniques to match and enrich Fire TV Catalog data to build rich customer experiences`,
+          intro: `Architected a new enrichment layer integrating LLMs and unstructured data to power semantic discovery, enabling natural language queries ("Alexa, What's the movie where Tom Hanks talks to a volleyball?").`,
           techStack: "Data Engineering,AWS Bedrock,Apache Spark",
           bullets: [
-            `Designed pipeline to assess content genres with an LLM in Catalog graph data model`,
-            `Architected cost-sensitive LLM inference layer, achieving token-limited `,
-            'Built evaluation and A/B testing frameworks for working with non-deterministic outputs from LLMs'
-          ]
+            `Designed a large-scale enrichment pipeline integrating LLMs into the Fire TV Catalog Graph to categorize and tag content with fine granularity.`,
+            `Implemented strict token-budgeting and monitoring controls to achieve viable unit economics (~$0.001 per entity), ensuring the solution is scalable to millions of catalog items.`,
+            `Drove organizational alignment to adopt a formal schema review process, creating a gatekeeper mechanism that standardized data model evolution and improved long-term maintainability.`]
         },
         {
-          title: "Building Fire TV Watch Activity Integration",
-          intro: `Built new integration with streaming apps to capture customer watch activity to create a Continue Watching row and personalized experiences.`,
+          title: "Fire TV Watch Activity Integration",
+          intro: `Built new integration with streaming app partners to capture customer watch history to create a {{link text='Continue Watching Row' out='https://amazonfiretv.blog/continue-watching-feature-comes-to-fire-tv-home-screen-00699b5be5a3'}} and personalized experiences.`,
           techStack: "Mobile-Cloud Architecture, Rust, Android, Java Services",
           bullets: [
             `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences.`,
-            `Authored the SDK and {{link text='integration documentation' out='https://developer.amazon.com/docs/fire-tv/get-started-with-firetv-integration-sdk.html'}}`,
+            `Authored the SDK, {{link text='integration documentation' out='https://developer.amazon.com/docs/fire-tv/get-started-with-firetv-integration-sdk.html'}} and {{link text='reference app' out='https://github.com/amzn/ftv-integration-sdk-sample-app'}}.`,
             `Engineered new on-device high-performance Rust service deployed to 100M+ devices with <5MB memory footprint, optimizing resource constraints on legacy hardware.`,
             `Built a cost-efficient distributed backend system on {{bold text='AWS'}} to process up to 300,000 transactions per second while handling sensitive user and partner data`,
           ]

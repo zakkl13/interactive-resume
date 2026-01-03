@@ -100,6 +100,25 @@ const styles = StyleSheet.create({
   bold: {
     fontWeight: 'bold', // Helvetica supports bold out of box usually
     fontFamily: 'Helvetica-Bold',
+  },
+  skillsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginTop: 4,
+  },
+  skillColumn: {
+    width: '33%',
+    paddingRight: 10,
+    marginBottom: 8,
+  },
+  skillCategoryTitle: {
+    fontWeight: 'bold',
+    fontSize: 9,
+    marginBottom: 2,
+  },
+  skillItem: {
+    fontSize: 9,
+    color: '#444',
   }
 });
 
@@ -181,6 +200,23 @@ export const ResumePdf = ({ data }: { data: ResumeData }) => (
       {data.summary && (
         <View style={styles.section}>
           <Text style={styles.summary}>{parsePdfText(data.summary)}</Text>
+        </View>
+      )}
+
+      {/* Skills */}
+      {data.skills && data.skills.length > 0 && (
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Skills</Text>
+          <View style={styles.skillsContainer}>
+            {data.skills.map((skill, i) => (
+              <View key={i} style={styles.skillColumn}>
+                <Text style={styles.skillCategoryTitle}>{skill.category}</Text>
+                <Text style={styles.skillItem}>
+                  {skill.items.join(', ')}
+                </Text>
+              </View>
+            ))}
+          </View>
         </View>
       )}
 
