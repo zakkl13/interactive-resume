@@ -5,7 +5,7 @@ export interface ResumeData {
   email: string,
   linkedin: string,
   summary: string,
-  impactBullets: string[],
+  skills: Skill[];
   experience: Experience[],
   education: Education[]
 }
@@ -18,10 +18,16 @@ export interface Experience {
   projects: Project[];
 }
 
+export interface Skill {
+  category: string;
+  items: string[];
+}
+
 export interface Project {
   title: string;
   intro: string;
   bullets: string[];
+  techStack?: string;
 }
 
 export interface Education {
@@ -36,9 +42,35 @@ export const resumeData: ResumeData = {
   email: "zlefkowits@gmail.com",
   linkedin: "https://www.linkedin.com/in/zakklefkowits/",
   github: "https://github.com/zakkl13",
-  summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} {{hover text='experienced' context='9 years of professional software development experience'}} in building products at scale to solve business problems and delight customers. {{bold text='Trusted with ownership of code deployed to 100+ million devices'}}. Adept in {{bold text='Agentic AI'}} engineering workflows to accelerate delivery. Skilled in System Design, Rust, Android, Web Development, Typescript, {{hover text='AWS architecture' context='Services include EC2, ECS, Lambda, SQS, DynamoDB, S3, CodeDeploy'}}, and building distributed back-end systems.`,
-  impactBullets: [
-    ""
+  summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} building distributed systems at scale to solve business problems and delight customers. {{bold text='Owner of core services deployed to 100+ million devices'}}. Evangelist for {{bold text='AI-augmented engineering'}}, leveraging agentic coding tools to multiply developer velocity and accelerate delivery cycles. Skilled in System Design, Rust, Android, Web Development, Data Engineering, {{hover text='AWS architecture' context='Services include EC2, ECS, Lambda, SQS, DynamoDB, S3, CodeDeploy'}}, and building distributed back-end systems.`,
+  skills: [
+    {
+      category: "Languages",
+      items: ["Rust", "Java", "Kotlin", "TypeScript", "JavaScript", "SQL"]
+    },
+    {
+      category: "AWS & Cloud Architecture",
+      items: [
+        "EC2", "ECS", "Lambda", "DynamoDB", "SQS", "S3", 
+        "CodeDeploy", "Bedrock", "CloudWatch"
+      ]
+    },
+    {
+      category: "Platforms & Frameworks",
+      items: [
+        "Android SDK", "Fire TV", "Apache Spark", 
+        "Node.js", "Angular", "Terraform (IaC)"
+      ]
+    },
+    {
+      category: "Developer Productivity",
+      items: [
+        "Agentic AI Workflows (Cline, Kiro CLI, Gemini CLI)", 
+        "System Design", 
+        "Distributed Systems", 
+        "CI/CD Pipelines"
+      ]
+    }
   ],
   experience: [
     {
@@ -50,8 +82,9 @@ export const resumeData: ResumeData = {
         {
           title: "Fire TV Catalog Data Enrichment",
           intro: `Leveraged LLM and classic ML techniques to match and enrich Fire TV Catalog data to build rich customer experiences`,
+          techStack: "Incremental data streaming platform,AWS Bedrock,Apache Spark",
           bullets: [
-            `Designed pipeline to assess content genres with an LLM`,
+            `Designed pipeline to assess content genres with an LLM in Catalog graph data model`,
             'Built evaluation and A/B testing frameworks for working with non-deterministic outputs from LLMs',
             `Enabled cost effective LLM inference mechanism with tight cost controls`
           ]
@@ -59,18 +92,20 @@ export const resumeData: ResumeData = {
         {
           title: "Building Fire TV Watch Activity Integration",
           intro: `Built new integration with streaming apps to capture customer watch activity to create a Continue Watching row and personalized experiences.`,
+          techStack: "Rust, Android, Java Services",
           bullets: [
             `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences.`,
-            `Wrote the SDK and {{link text='integration documentation' out='https://developer.amazon.com/docs/fire-tv/get-started-with-firetv-integration-sdk.html'}}`,
-            `Shipped new on-device {{bold text='Rust'}} service to over 100 million devices. Runs on commodity consumer hardware with less than 5MB memory footprint`,
+            `Authored the SDK and {{link text='integration documentation' out='https://developer.amazon.com/docs/fire-tv/get-started-with-firetv-integration-sdk.html'}}`,
+            `Engineered new on-device high-performance Rust service deployed to 100M+ devices with <5MB memory footprint, optimizing resource constraints on legacy hardware.`,
             `Built a cost-efficient distributed backend system on {{bold text='AWS'}} to process up to 300,000 transactions per second while handling sensitive user and partner data`,
           ]
         },
         {
           title: "Live TV Integration",
           intro: "Improved and operated the existing {{link text='Live TV' out='https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4'}} integration on Fire TV",
+          techStack: "Java Services, Android (Kotlin and Java)",
           bullets: [
-            `Oversaw launches of 40+ Live TV (e.g., {{link text='DirecTv' out='https://amazonfiretv.blog/fire-tv-launches-new-linear-live-tv-experience-for-directv-stream-subscribers-9d9632e8b518'}}) partners worldwide leading to a 100% increase in Monthly Active Users of the Fire TV Live TV experience from 2020 to 2022`,
+            `Scaled platform capabilities to support launches of 40+ Live TV (e.g., {{link text='DirecTv' out='https://amazonfiretv.blog/fire-tv-launches-new-linear-live-tv-experience-for-directv-stream-subscribers-9d9632e8b518'}}) partners worldwide leading to a 100% increase in Monthly Active Users of the Fire TV Live TV experience from 2020 to 2023`,
             `Enhanced monitoring capabilities to identify customer-impacting issues in real-time`,
             `Improved latency by 50% in Live TV voice commands “{{hover text='tune to channel' context='For example, 'Alexa, tune to ABC' '}}” voice command by optimizing {{bold text='Java'}} services stack.`,
             `Built up developer resources including significant improvements to the {{link text='reference app' out='https://github.com/amzn/ftv-livetv-sample-tv-app'}} for developers as well as writing a {{link text='step-by-step integration guide' out='https://developer.amazon.com/docs/fire-tv/linear-tv-integration-guide-overview.html'}}.`
@@ -80,7 +115,7 @@ export const resumeData: ResumeData = {
           title: "Team Leadership & Responsibilities",
           intro: "",
           bullets: [
-            `Developed team-standard context for AI coding tools, defined best practices to accelerate team adoption of Agentic AI coding tools`,
+            `Champion of AI-augmented software development practices; successfully integrated LLM tooling into team workflows to accelerate system design and implementation cycles.`,
             `Acted as technical expert for Amazon in negotiations with top US content providers (e.g., Netflix, HBO, etc.) business and engineering teams to drive adoption of integrations`,
             `Raised team technical quality bar through individual mentorship, leading by example and building {{hover text='mechanisms' context='Established a weekly Engineering Sync. Time to gather engineers for an open forum to break down problems, pair program, de-bug and discuss design trade-offs.'}} to foster healthy engineering culture`,
             `Mentored individual engineers leading to four promotions from junior to mid-level`,
@@ -97,6 +132,7 @@ export const resumeData: ResumeData = {
         {
           title: "AWS Application Migration",
           intro: "Global Top 10 Insurance Client. Migrated legacy enterprise tech stack to AWS.",
+          techStack: "AWS ECS, Terraform, TypeScript, Java",
           bullets: [
             `Designed {{bold text='AWS ECS'}} architecture to migrate existing containers`,
             `Designed mature cloud architecture and CI/CD based on {{bold text='AWS CodeDeploy'}} for legacy windows-based Java payment application responsible for processing ~$1bn/year`,
@@ -107,9 +143,10 @@ export const resumeData: ResumeData = {
         {
           title: "Insurance Web App Refresh",
           intro: "Global Top 10 Insurance Client. Built framework for co-branded insurance websites.",
+          techStack: "Angular, Node.js, CMS",
           bullets: [
             `Delivered client web app framework; built on an {{bold text='Angular'}} front-end and {{bold text='Node.js'}} backend`,
-            `Implemented headless CMS system to allow buisness users to create arbitrary websites for 100s of insurance partners.`
+            `Implemented headless CMS system to allow business users to create arbitrary websites for 100s of insurance partners.`
           ]
         }
       ]
