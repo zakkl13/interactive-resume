@@ -15,11 +15,6 @@ export const RESUME_SKINS: Record<string, ResumeSkinDefinition> = {
         name: "Timeline",
         component: TimelineResume
     },
-    bento: {
-        id: "bento",
-        name: "Bento",
-        component: BentoResume
-    },
     git: {
         id: "git",
         name: "Git Log",

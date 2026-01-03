@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ResumeSkinProps } from "./types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEnvelope, faHome, faLocationDot, faChevronDown, faChevronUp, faBriefcase, faGraduationCap, faUser, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faEnvelope, faHome, faLocationDot, faChevronDown, faChevronUp, faBriefcase, faGraduationCap, faUser, faChevronRight, faCode } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import Link from "next/link";
 import { parseFormattedText } from "@/utils/formatter";
@@ -69,10 +69,40 @@ const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
                     </div>
                 </motion.header>
 
-                {/* Summary Section - Detached from timeline */}
+                {/* Summary & Skills Section */}
                 <motion.div variants={itemVariants} className="mb-12 max-w-4xl mx-auto">
-                    <div className="text-slate-700 dark:text-slate-300 leading-relaxed text-lg bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                        {parseFormattedText(data.summary)}
+                    <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden">
+                        {/* Summary */}
+                        <div className="p-6 text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
+                            <h3 className="text-sm uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-4 flex items-center gap-2">
+                                <FontAwesomeIcon icon={faUser} /> About Me
+                            </h3>
+                            {parseFormattedText(data.summary)}
+                        </div>
+
+                        {/* Divider */}
+                        <div className="h-px bg-slate-100 dark:bg-slate-700 mx-6"></div>
+
+                        {/* Skills Compact */}
+                        <div className="p-6">
+                            <h3 className="text-sm uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-3 flex items-center gap-2">
+                                <FontAwesomeIcon icon={faCode} /> Skills
+                            </h3>
+                            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                                {data.skills && data.skills.map((skill, idx) => (
+                                    <div key={idx}>
+                                        <h4 className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase mb-1.5">{skill.category}</h4>
+                                        <div className="flex flex-wrap gap-1">
+                                            {skill.items.map((item, i) => (
+                                                <span key={i} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-md border border-slate-200 dark:border-slate-600">
+                                                    {item}
+                                                </span>
+                                            ))}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </motion.div>
 

@@ -46,29 +46,48 @@ export const resumeData: ResumeData = {
   skills: [
     {
       category: "Languages",
-      items: ["Rust", "Java", "Kotlin", "TypeScript", "JavaScript", "SQL"]
+      items: ["Rust", "Java", "Kotlin", "TypeScript", "Python", "SQL"]
     },
     {
-      category: "AWS & Cloud Architecture",
+      category: "AWS, Cloud & Infrastructure",
       items: [
-        "EC2", "ECS", "Lambda", "DynamoDB", "SQS", "S3", 
-        "CodeDeploy", "Bedrock", "CloudWatch"
+        "EC2", 
+        "ECS",
+        "Lambda",
+        "DynamoDB",
+        "SQS",
+        "Bedrock",
+        "CDK",
+        "S3",
+        "CloudWatch",
+        "CodeDeploy",
+        "Terraform (IaC)"
       ]
     },
     {
-      category: "Platforms & Frameworks",
+      category: "Platforms", 
       items: [
-        "Android SDK", "Fire TV", "Apache Spark", 
-        "Node.js", "Angular", "Terraform (IaC)"
+        "Android",
+        "Spring Java",
+        "Apache Spark",
+        "RocksDB"
       ]
     },
     {
-      category: "Developer Productivity",
+      category: "Architecture & Core Competencies", // The home for your high-level skills
       items: [
-        "Agentic AI Workflows (Cline, Kiro CLI, Gemini CLI)", 
-        "System Design", 
-        "Distributed Systems", 
-        "CI/CD Pipelines"
+        "System Design",
+        "Distributed Systems",
+        "Agentic Workflow Automation", 
+        "Data Engineering"
+      ]
+    },
+    {
+      category: "Dev Tools",
+      items: [
+        "Cline",
+        "Gemini CLI",
+        "Kiro CLI"
       ]
     }
   ],

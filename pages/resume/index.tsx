@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import dynamic from 'next/dynamic';
-import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faFilePdf, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { resumeData } from "@/data/resumeData";
 import { DEFAULT_SKIN, RESUME_SKINS } from "@/components/skins";
@@ -18,6 +18,33 @@ const PDFDownloadLink = dynamic(
 const ResumePage: React.FC = () => {
   const router = useRouter();
   const [currentSkinId, setCurrentSkinId] = useState(DEFAULT_SKIN.id);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    // Initialize dark mode from localStorage or system preference
+    const savedTheme = localStorage.getItem('theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    
+    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const newMode = !isDarkMode;
+    setIsDarkMode(newMode);
+    localStorage.setItem('theme', newMode ? 'dark' : 'light');
+    
+    if (newMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
 
   useEffect(() => {
     if (router.isReady) {
@@ -64,6 +91,17 @@ const ResumePage: React.FC = () => {
           </select>
         </div>
         
+        <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
+
+        <button
+          onClick={toggleTheme}
+          className="text-gray-600 dark:text-gray-400 hover:text-yellow-500 dark:hover:text-yellow-300 transition-colors w-5 h-5 flex items-center justify-center"
+          title={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          aria-label={isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        >
+          <FontAwesomeIcon icon={isDarkMode ? faSun : faMoon} size="lg" />
+        </button>
+
         <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
 
         <PDFDownloadLink

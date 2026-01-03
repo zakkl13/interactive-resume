@@ -1,6 +1,6 @@
 import React from "react";
 import { ResumeSkinProps } from "./types";
-import { ResumeData, Experience, Project, Education } from "@/data/resumeData";
+import { ResumeData, Experience, Project, Education, Skill } from "@/data/resumeData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCodeBranch, faHistory, faTag, faUser, faCalendarAlt, faHome, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
@@ -19,7 +19,7 @@ const generateHash = (str: string) => {
     return Math.abs(hash).toString(16).substring(0, 7).padEnd(7, '0');
 };
 
-type CommitType = 'job' | 'project' | 'education' | 'merge';
+type CommitType = 'job' | 'project' | 'education';
 
 interface CommitNode {
     id: string;
@@ -101,44 +101,77 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
 
     // Render Logic
     return (
-        <div className="bg-[#0d1117] text-[#c9d1d9] min-h-screen font-mono p-4 md:p-8 selection:bg-blue-900">
+        <div className="bg-white dark:bg-[#0d1117] text-gray-900 dark:text-[#c9d1d9] min-h-screen font-mono p-4 md:p-8 selection:bg-blue-100 dark:selection:bg-blue-900 transition-colors duration-300">
             <div className="max-w-6xl mx-auto">
                 {/* Header (Terminal Prompt Style) */}
-                <div className="mb-12 border-b border-[#30363d] pb-8">
-                    <div className="text-sm text-[#8b949e] mb-2">
+                <div className="mb-12 border-b border-gray-200 dark:border-[#30363d] pb-8">
+                    <div className="text-sm text-gray-500 dark:text-[#8b949e] mb-2">
                         Last login: {new Date().toDateString()} on ttys001
                     </div>
-                    <h1 className="text-4xl md:text-5xl font-bold text-[#58a6ff] mb-4">
-                        <span className="text-[#8b949e]">$</span> git log --graph --oneline --decorate
+                    <h1 className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-[#58a6ff] mb-4">
+                        <span className="text-gray-400 dark:text-[#8b949e]">$</span> git log --graph --oneline --decorate
                     </h1>
                     
-                    <div className="flex flex-wrap gap-6 mt-6 text-[#8b949e]">
-                        <a href={data.linkedin} className="hover:text-[#58a6ff] transition-colors">
+                    <div className="flex flex-wrap gap-6 mt-6 text-gray-500 dark:text-[#8b949e]">
+                        <a href={data.linkedin} className="hover:text-blue-600 dark:hover:text-[#58a6ff] transition-colors">
                             <FontAwesomeIcon icon={faLinkedin} className="mr-2" />
                             origin/linkedin
                         </a>
-                        <a href={data.github} className="hover:text-[#58a6ff] transition-colors">
+                        <a href={data.github} className="hover:text-blue-600 dark:hover:text-[#58a6ff] transition-colors">
                             <FontAwesomeIcon icon={faGithub} className="mr-2" />
                             origin/github
                         </a>
-                        <a href={`mailto:${data.email}`} className="hover:text-[#58a6ff] transition-colors">
+                        <a href={`mailto:${data.email}`} className="hover:text-blue-600 dark:hover:text-[#58a6ff] transition-colors">
                             <FontAwesomeIcon icon={faEnvelope} className="mr-2" />
                             user.email
                         </a>
-                         <Link href="/" className="hover:text-[#58a6ff] transition-colors">
+                         <Link href="/" className="hover:text-blue-600 dark:hover:text-[#58a6ff] transition-colors">
                             <FontAwesomeIcon icon={faHome} className="mr-2" />
                             ~ (Home)
                         </Link>
                     </div>
 
-                    <div className="mt-8 p-4 bg-[#161b22] border border-[#30363d] rounded-md text-[#c9d1d9]">
-                        <div className="flex gap-2 mb-2">
-                            <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                            <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                            <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                    <div className="mt-8 space-y-6">
+                        {/* Summary */}
+                        <div className="p-4 bg-gray-50 dark:bg-[#161b22] border border-gray-200 dark:border-[#30363d] rounded-md text-gray-800 dark:text-[#c9d1d9]">
+                            <div className="flex justify-between items-center mb-2 border-b border-gray-200 dark:border-[#30363d] pb-2">
+                                <span className="text-xs text-gray-500 dark:text-[#8b949e]">README.md</span>
+                                <div className="flex gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                                    <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                                    <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                                </div>
+                            </div>
+                            <div className="whitespace-pre-wrap font-sans text-sm md:text-base">
+                                {parseFormattedText(data.summary)}
+                            </div>
                         </div>
-                        <div className="whitespace-pre-wrap font-sans">
-                            {parseFormattedText(data.summary)}
+
+                        {/* Skills Box */}
+                        <div className="p-4 bg-gray-50 dark:bg-[#161b22] border border-gray-200 dark:border-[#30363d] rounded-md text-gray-800 dark:text-[#c9d1d9]">
+                             <div className="flex justify-between items-center mb-2 border-b border-gray-200 dark:border-[#30363d] pb-2">
+                                <span className="text-xs text-gray-500 dark:text-[#8b949e]">package.json</span>
+                                <div className="flex gap-2">
+                                    <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
+                                    <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
+                                    <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+                                </div>
+                            </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 text-xs font-mono">
+                                {data.skills && data.skills.map((skill, idx) => (
+                                    <div key={idx}>
+                                        <div className="text-red-600 dark:text-[#ff7b72] mb-1">"{skill.category}": [</div>
+                                        <div className="pl-4 flex flex-wrap gap-1">
+                                            {skill.items.map((item, i) => (
+                                                <span key={i} className="text-blue-600 dark:text-[#a5d6ff]">
+                                                    "{item}"{i < skill.items.length - 1 ? "," : ""}
+                                                </span>
+                                            ))}
+                                        </div>
+                                        <div className="text-red-600 dark:text-[#ff7b72]">]{idx < data.skills!.length - 1 ? "," : ""}</div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -167,31 +200,31 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
                                 className="flex group"
                             >
                                 {/* Graph Column (Fixed Width) */}
-                                <div className="w-16 md:w-24 shrink-0 relative flex justify-center text-[#8b949e]">
+                                <div className="w-16 md:w-24 shrink-0 relative flex justify-center text-gray-400 dark:text-[#8b949e]">
                                     <GraphLines commit={commit} nextCommit={nextCommit} />
                                 </div>
 
                                 {/* Content Column */}
                                 <div className="pb-8 pt-1 flex-grow">
                                     <div className="flex items-baseline gap-3 mb-1">
-                                        <span className="text-[#d2a8ff] text-sm">{commit.hash}</span>
-                                        <span className={`text-sm ${commit.onMainBranch ? 'text-[#7ee787]' : 'text-[#a5d6ff]'}`}>
+                                        <span className="text-purple-600 dark:text-[#d2a8ff] text-sm">{commit.hash}</span>
+                                        <span className={`text-sm ${commit.onMainBranch ? 'text-green-600 dark:text-[#7ee787]' : 'text-blue-500 dark:text-[#a5d6ff]'}`}>
                                             ({commit.onMainBranch ? 'HEAD -> main' : commit.branchName})
                                         </span>
-                                        <span className="text-[#8b949e] text-xs hidden md:inline">
+                                        <span className="text-gray-500 dark:text-[#8b949e] text-xs hidden md:inline">
                                             {commit.date}
                                         </span>
                                     </div>
                                     
-                                    <div className="text-lg md:text-xl font-bold hover:underline cursor-pointer decoration-[#58a6ff]">
+                                    <div className="text-lg md:text-xl font-bold hover:underline cursor-pointer decoration-blue-500 dark:decoration-[#58a6ff]">
                                         {commit.message}
                                     </div>
 
                                     {/* Commit Details (The Content) */}
-                                    <div className="mt-2 text-[#8b949e] pl-4 border-l-2 border-[#30363d] ml-1">
+                                    <div className="mt-2 text-gray-600 dark:text-[#8b949e] pl-4 border-l-2 border-gray-300 dark:border-[#30363d] ml-1">
                                         {commit.type === 'job' && (
                                             <div className="text-sm space-y-2">
-                                                <div className="text-[#c9d1d9]">{parseFormattedText((commit.data as Experience).company)}</div>
+                                                <div className="text-gray-900 dark:text-[#c9d1d9]">{parseFormattedText((commit.data as Experience).company)}</div>
                                                 {(commit.data as Experience).roleSummary && (
                                                     <div className="italic">{parseFormattedText((commit.data as Experience).roleSummary!)}</div>
                                                 )}
@@ -200,7 +233,18 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
 
                                         {commit.type === 'project' && (
                                             <div className="text-sm">
-                                                 <div className="mb-2 text-[#c9d1d9]">{parseFormattedText((commit.data as Project).intro)}</div>
+                                                 <div className="mb-2 text-gray-800 dark:text-[#c9d1d9]">{parseFormattedText((commit.data as Project).intro)}</div>
+                                                 
+                                                 {(commit.data as Project).techStack && (
+                                                    <div className="flex flex-wrap gap-2 mb-3">
+                                                        {(commit.data as Project).techStack?.split(',').map((tech, tIdx) => (
+                                                            <span key={tIdx} className="text-blue-600 dark:text-[#a5d6ff] bg-blue-100 dark:bg-[#1f6feb]/10 px-2 py-0.5 rounded-full text-xs border border-blue-200 dark:border-[#1f6feb]/30">
+                                                                #{tech.trim().toLowerCase().replace(/\s+/g, '-')}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                 )}
+
                                                  <ul className="list-disc pl-4 space-y-1">
                                                     {(commit.data as Project).bullets.map((b: string, i: number) => (
                                                         <li key={i}>{parseFormattedText(b)}</li>
@@ -211,7 +255,7 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
 
                                         {commit.type === 'education' && (
                                             <div className="text-sm">
-                                                <div className="text-[#c9d1d9]">{parseFormattedText((commit.data as Education).school)}</div>
+                                                <div className="text-gray-900 dark:text-[#c9d1d9]">{parseFormattedText((commit.data as Education).school)}</div>
                                             </div>
                                         )}
                                     </div>
@@ -221,7 +265,7 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
                     })}
                 </div>
                 
-                <div className="text-center text-[#8b949e] mt-12 pb-12 font-mono text-sm">
+                <div className="text-center text-gray-500 dark:text-[#8b949e] mt-12 pb-12 font-mono text-sm">
                     <p>End of log.</p>
                 </div>
             </div>
@@ -250,7 +294,7 @@ const GraphLines: React.FC<{ commit: CommitNode, nextCommit?: CommitNode }> = ({
                 <line 
                     x1={mainX} y1={0} 
                     x2={mainX} y2="100%" 
-                    stroke="#30363d" 
+                    className="stroke-gray-300 dark:stroke-[#30363d]"
                     strokeWidth="2" 
                 />
 
@@ -259,7 +303,7 @@ const GraphLines: React.FC<{ commit: CommitNode, nextCommit?: CommitNode }> = ({
                      <line 
                      x1={branchX} y1={0} 
                      x2={branchX} y2="100%" 
-                     stroke="#30363d" 
+                     className="stroke-gray-300 dark:stroke-[#30363d]"
                      strokeWidth="2" 
                  />
                 )}
@@ -270,7 +314,7 @@ const GraphLines: React.FC<{ commit: CommitNode, nextCommit?: CommitNode }> = ({
                      <path 
                         d={`M ${mainX} ${dotY} C ${mainX} ${dotY + 20}, ${branchX} ${dotY}, ${branchX} ${dotY + 40}`}
                         fill="none"
-                        stroke="#30363d"
+                        className="stroke-gray-300 dark:stroke-[#30363d]"
                         strokeWidth="2"
                      />
                 )}
@@ -280,13 +324,13 @@ const GraphLines: React.FC<{ commit: CommitNode, nextCommit?: CommitNode }> = ({
                      <path 
                      d={`M ${branchX} ${dotY} C ${branchX} ${dotY + 20}, ${mainX} ${dotY}, ${mainX} ${dotY + 40}`}
                      fill="none"
-                     stroke="#30363d"
+                     className="stroke-gray-300 dark:stroke-[#30363d]"
                      strokeWidth="2"
                   />
                 )}
 
                 {/* The Dot */}
-                <circle cx={commit.onMainBranch ? mainX : branchX} cy={dotY} r="5" fill={dotColor} stroke="#0d1117" strokeWidth="2" />
+                <circle cx={commit.onMainBranch ? mainX : branchX} cy={dotY} r="5" fill={dotColor} className="stroke-white dark:stroke-[#0d1117]" strokeWidth="2" />
             </svg>
         </div>
     );
