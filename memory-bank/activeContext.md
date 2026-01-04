@@ -9,6 +9,7 @@ Finalizing the Timeline skin with Summary/Skills integration.
     - Implemented a unified collapsible state (`expandedSection`) to manage visibility of Summary and Experience items.
     - Set default state to show **Summary & Skills** expanded initially, while Experience items start collapsed.
     - **Reverted** the addition of a separate "Profile" section header based on user feedback to save vertical space. The Summary is now a direct node on the timeline.
+    - Added a visible **"Projects"** header next to the expand arrow in experience items to clarify hidden content, and added a **pronounced bounce animation to the arrow of the first experience item** to draw attention when it scrolls into view.
 - **Layout Refinement (Git & Timeline)**:
     - Moved the **Skills** section to appear **below** the Summary in both the Git and Timeline skins.
 - **Skills Integration**:

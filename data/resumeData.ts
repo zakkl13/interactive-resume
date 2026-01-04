@@ -54,7 +54,7 @@ export const resumeData: ResumeData = {
         "Python",
         "SQL",
         "Android",
-        "Spring Java",
+        "Spring Boot",
         "Apache Spark",
         "RocksDB"
       ]

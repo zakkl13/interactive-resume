@@ -195,8 +195,21 @@ const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
                                                     )}
 
                                                     <div className="flex justify-between items-center mb-1">
-                                                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider opacity-0">Highlights</span>
-                                                        <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-slate-400 dark:text-slate-500" />
+                                                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">Projects</span>
+                                                        {idx === 0 ? (
+                                                            <motion.div
+                                                                initial={{ y: 0 }}
+                                                                whileInView={{ y: [0, -20, 0, -10, 0, -5, 0] }}
+                                                                transition={{ duration: 2, delay: 1.6, ease: "easeInOut" }}
+                                                                viewport={{ once: true }}
+                                                            >
+                                                                <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-slate-400 dark:text-slate-500" />
+                                                            </motion.div>
+                                                        ) : (
+                                                            <div>
+                                                                <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-slate-400 dark:text-slate-500" />
+                                                            </div>
+                                                        )}
                                                     </div>
                                                 </div>
                                                 
