@@ -92,7 +92,7 @@ export const resumeData: ResumeData = {
       title: "Senior Software Engineer",
       company: "Amazon, {{hover text='Fire TV' context='Fire TV is a leading streaming media platform having sold over 200 million devices to date.'}}",
       duration: "April 2020 - Present",
-      roleSummary: "Promoted to Senior Engineer (Q4 2022). Currently architecting data processing systems for the Fire TV Catalog. Previously led high-scale on-device and distributed systems delivery for Partner Integrations. Championing agentic coding tools to accelerate delivery.",
+      roleSummary: "Promoted to Senior Engineer (Q4 2022). Currently architecting data processing systems for the Fire TV Catalog. Previously led high-scale full stack device to server delivery for Fire TV Partner Integrations. Championing agentic coding tools to accelerate delivery.",
       projects: [
         {
           title: "Catalog Data Enrichment",
@@ -104,7 +104,7 @@ export const resumeData: ResumeData = {
             `Drove organizational alignment to adopt a formal schema review process for all Catalog data model changes, creating a gatekeeper mechanism that standardized data model evolution and improved long-term maintainability.`]
         },
         {
-          title: "Building New Content Personalization Integration",
+          title: "Content Personalization Integration",
           intro: `Built {{link text='new integration' out='https://developer.amazon.com/docs/fire-tv/introduction-content-personalization.html'}} with streaming app partners to capture customer watch history to create a {{link text='Continue Watching Row' out='https://amazonfiretv.blog/continue-watching-feature-comes-to-fire-tv-home-screen-00699b5be5a3'}} and personalized experiences.`,
           techStack: "Mobile-Cloud Architecture, Rust, Android, Java Services",
           bullets: [
@@ -115,7 +115,7 @@ export const resumeData: ResumeData = {
           ]
         },
         {
-          title: "Live TV Integration",
+          title: "Operating Live TV Integration",
           intro: "Improved and operated the existing {{link text='Live TV' out='https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4'}} integration on Fire TV",
           techStack: "Mobile-Cloud Architecture, Java Services, Android",
           bullets: [
