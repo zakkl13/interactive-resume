@@ -96,10 +96,10 @@ export const resumeData: ResumeData = {
       projects: [
         {
           title: "Catalog Data Enrichment",
-          intro: `Architected a new enrichment layer in the Catalog data processing platform integrating LLMs and external web data to power semantic discovery, enabling natural language queries ("Alexa, What's the movie where Tom Hanks talks to a volleyball?").`,
+          intro: `Architected a new enrichment layer in the Catalog data processing platform integrating LLMs and external web data to power semantic discovery, enabling natural language queries ("Alexa, what's the movie where Tom Hanks talks to a volleyball?").`,
           techStack: "Data Engineering, AWS Bedrock, Apache Spark",
           bullets: [
-            `Designed an enrichment pipeline integrating LLMs into the Fire TV Catalog Graph to categorize and tag content with fine granularity.`,
+            `Developed an enrichment pipeline integrating LLMs into the Fire TV Catalog Graph to categorize and tag content with fine granularity.`,
             `Implemented strict token-budgeting and monitoring controls to achieve viable unit economics (~$0.001 per entity), ensuring the solution is scalable to millions of catalog items.`,
             `Drove organizational alignment to adopt a formal schema review process for all Catalog data model changes, creating a gatekeeper mechanism that standardized data model evolution and improved long-term maintainability.`]
         },
@@ -115,7 +115,7 @@ export const resumeData: ResumeData = {
           ]
         },
         {
-          title: "Operating Live TV Integration",
+          title: "Live TV Integration",
           intro: "Improved and operated the existing {{link text='Live TV' out='https://amazonfiretv.blog/discovering-live-tv-is-easier-than-ever-on-fire-tv-8415e417bab4'}} integration on Fire TV",
           techStack: "Mobile-Cloud Architecture, Java Services, Android",
           bullets: [
