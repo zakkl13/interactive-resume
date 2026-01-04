@@ -42,7 +42,7 @@ export const resumeData: ResumeData = {
   email: "zlefkowits@gmail.com",
   linkedin: "https://www.linkedin.com/in/zakklefkowits/",
   github: "https://github.com/zakkl13",
-  summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} building distributed systems at scale to solve business problems and delight customers. 9 years of professional software development experience. {{bold text='Owner of core services deployed to 100+ million devices'}}. Evangelist for {{bold text='AI-augmented engineering'}}, leveraging agentic coding tools to multiply developer velocity and accelerate delivery cycles.`,
+  summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} building distributed systems at scale to solve business problems and delight customers. 9 years of professional software development experience. {{bold text='Owner of core services deployed to 100+ million devices'}}. Evangelist for {{bold text='AI-augmented engineering'}}, leveraging agentic coding tools to multiply developer velocity.`,
   skills: [
     {
       category: "Languages & Technologies",
@@ -92,19 +92,19 @@ export const resumeData: ResumeData = {
       title: "Senior Software Engineer",
       company: "Amazon, {{hover text='Fire TV' context='Fire TV is a leading streaming media platform having sold over 200 million devices to date.'}}",
       duration: "April 2020 - Present",
-      roleSummary: "Key technical leader across the Fire TV Catalog and Partner Integrations teams. Building features directly leading to increased engagement and revenue. Promoted to Senior Engineer in Q4 2022.",
+      roleSummary: "Promoted to Senior Engineer (Q4 2022). Currently architecting data processing systems for the Fire TV Catalog. Previously led high-scale on-device and distributed systems delivery for Partner Integrations. Championing agentic coding tools to accelerate delivery.",
       projects: [
         {
-          title: "Fire TV Catalog Data Enrichment",
-          intro: `Architected a new enrichment layer integrating LLMs and unstructured data to power semantic discovery, enabling natural language queries ("Alexa, What's the movie where Tom Hanks talks to a volleyball?").`,
+          title: "Catalog Data Enrichment",
+          intro: `Architected a new enrichment layer in the Catalog data processing platform integrating LLMs and external web data to power semantic discovery, enabling natural language queries ("Alexa, What's the movie where Tom Hanks talks to a volleyball?").`,
           techStack: "Data Engineering, AWS Bedrock, Apache Spark",
           bullets: [
-            `Designed a large-scale enrichment pipeline integrating LLMs into the Fire TV Catalog Graph to categorize and tag content with fine granularity.`,
+            `Designed an enrichment pipeline integrating LLMs into the Fire TV Catalog Graph to categorize and tag content with fine granularity.`,
             `Implemented strict token-budgeting and monitoring controls to achieve viable unit economics (~$0.001 per entity), ensuring the solution is scalable to millions of catalog items.`,
-            `Drove organizational alignment to adopt a formal schema review process, creating a gatekeeper mechanism that standardized data model evolution and improved long-term maintainability.`]
+            `Drove organizational alignment to adopt a formal schema review process for all Catalog data model changes, creating a gatekeeper mechanism that standardized data model evolution and improved long-term maintainability.`]
         },
         {
-          title: "Fire TV Watch Activity Integration",
+          title: "Third Party Watch History Integration",
           intro: `Built new integration with streaming app partners to capture customer watch history to create a {{link text='Continue Watching Row' out='https://amazonfiretv.blog/continue-watching-feature-comes-to-fire-tv-home-screen-00699b5be5a3'}} and personalized experiences.`,
           techStack: "Mobile-Cloud Architecture, Rust, Android, Java Services",
           bullets: [
@@ -149,7 +149,7 @@ export const resumeData: ResumeData = {
           techStack: "AWS ECS, Terraform, TypeScript, Java",
           bullets: [
             `Designed {{bold text='AWS ECS'}} architecture to migrate existing containers.`,
-            `Designed mature cloud architecture and CI/CD based on {{bold text='AWS CodeDeploy'}} for legacy windows-based Java payment application responsible for processing ~$1bn/year.`,
+            `Designed cloud architecture and CI/CD based on {{bold text='AWS CodeDeploy'}} for legacy windows-based Java payment application responsible for processing ~$1bn/year.`,
             `Developed command line interface written in {{bold text='Typescript'}} to facilitate common AWS deployments.`,
             `Built Infrastructure-as-Code (IaC) {{bold text='Terraform'}} templates for AWS resources.`
           ]

@@ -12,7 +12,7 @@ Finalizing the Timeline skin with Summary/Skills integration.
 - **Layout Refinement (Git & Timeline)**:
     - Moved the **Skills** section to appear **below** the Summary in both the Git and Timeline skins.
 - **Skills Integration**:
-    - Updated `ClassicResume.tsx` to display skills in a grid layout.
+    - Updated `ClassicResume.tsx` to display skills in a compact grid layout with smaller badges (`text-xs`, reduced padding) and spacing to optimize vertical real estate.
 - **Tech Stack Integration**:
     - Added tech stack data and rendering to projects.
 

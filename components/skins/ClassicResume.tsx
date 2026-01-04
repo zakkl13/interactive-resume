@@ -61,11 +61,11 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
 
   const renderSkills = (skill: Skill, idx: number) => {
     return (
-      <div key={idx} className="mb-3">
-        <h3 className="text-lg font-bold mb-2">{skill.category}</h3>
-        <div className="flex flex-wrap gap-2">
+      <div key={idx} className="mb-2">
+        <h3 className="text-sm font-bold mb-1">{skill.category}</h3>
+        <div className="flex flex-wrap gap-1">
             {skill.items.map((item, i) => (
-                <span key={i} className="bg-gray-200 dark:bg-gray-700 px-3 py-1 rounded-full text-sm">
+                <span key={i} className="bg-gray-200 dark:bg-gray-700 px-2 py-0.5 rounded text-xs">
                     {item}
                 </span>
             ))}

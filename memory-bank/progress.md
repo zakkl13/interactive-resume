@@ -24,6 +24,7 @@
 - [x] **Skin Persistence**: Preserve selected skin in URL query parameter.
 - [x] **Tech Stack Integration**: Added tech stack data and rendering.
 - [x] **Skills Integration**: Added skills data and rendering across all skins.
+- [x] **Classic Skin Optimization**: Compacted skills section in Classic skin.
 - [x] **Timeline Refinement**: Integrated Summary/Skills into the timeline flow.
 - [x] **PDF Update**: Included Skills section in PDF generation.
 - [ ] **Content Refresh**: Continue updating resume data and personal info.
