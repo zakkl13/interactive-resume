@@ -104,8 +104,8 @@ export const resumeData: ResumeData = {
             `Drove organizational alignment to adopt a formal schema review process for all Catalog data model changes, creating a gatekeeper mechanism that standardized data model evolution and improved long-term maintainability.`]
         },
         {
-          title: "Third Party Watch History Integration",
-          intro: `Built new integration with streaming app partners to capture customer watch history to create a {{link text='Continue Watching Row' out='https://amazonfiretv.blog/continue-watching-feature-comes-to-fire-tv-home-screen-00699b5be5a3'}} and personalized experiences.`,
+          title: "Building New Content Personalization Integration",
+          intro: `Built {{link text='new integration' out='https://developer.amazon.com/docs/fire-tv/introduction-content-personalization.html'}} with streaming app partners to capture customer watch history to create a {{link text='Continue Watching Row' out='https://amazonfiretv.blog/continue-watching-feature-comes-to-fire-tv-home-screen-00699b5be5a3'}} and personalized experiences.`,
           techStack: "Mobile-Cloud Architecture, Rust, Android, Java Services",
           bullets: [
             `Led technical design of system to collect data from partner apps and upload for use in Fire TV experiences.`,
@@ -141,7 +141,7 @@ export const resumeData: ResumeData = {
       title: "Senior Consultant",
       company: "CapTech Consulting",
       duration: "July 2017 - March 2020",
-      roleSummary: "Consultant deployed to clients to execute critical software projects and advise on technical strategy. Promoted to Sr. Consultant Q3 2019.",
+      roleSummary: "Promoted to Senior Consultant (Q3 2019). Led cloud modernization initiatives for Global Top 10 insurance client, migrating legacy enterprise systems to AWS serverless and containerized architectures. Advised client leadership on DevOps and technical strategy.",
       projects: [
         {
           title: "AWS Application Migration",
