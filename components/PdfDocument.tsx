@@ -193,6 +193,7 @@ export const ResumePdf = ({ data }: { data: ResumeData }) => (
             <Link src={`mailto:${data.email}`} style={styles.link}>{data.email}</Link>
             <Link src={data.linkedin} style={styles.link}>LinkedIn</Link>
             <Link src={data.github} style={styles.link}>GitHub</Link>
+            <Link src={data.website} style={styles.link}>zakk.io/resume</Link>
         </View>
       </View>
 

@@ -4,6 +4,7 @@ export interface ResumeData {
   github: string,
   email: string,
   linkedin: string,
+  website: string,
   summary: string,
   skills: Skill[];
   experience: Experience[],
@@ -42,7 +43,8 @@ export const resumeData: ResumeData = {
   email: "zlefkowits@gmail.com",
   linkedin: "https://www.linkedin.com/in/zakklefkowits/",
   github: "https://github.com/zakkl13",
-  summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} building distributed systems at scale to solve business problems and delight customers. 9 years of professional software development experience. {{bold text='Owner of core services deployed to 100+ million devices'}}. Evangelist for {{bold text='AI-augmented engineering'}}, leveraging agentic coding tools to multiply developer velocity.`,
+  website: "https://zakk.io/resume",
+  summary: `Product Minded Software Engineer & Tech Lead at {{bold text='Amazon'}} building distributed systems at scale, backed by 9 years of professional software development experience. {{bold text='Owner of core services deployed to 100+ million devices'}}. Avid tinkerer with {{bold text='AI-augmented engineering'}}, building at incredible velocity.`,
   skills: [
     {
       category: "Languages & Technologies",

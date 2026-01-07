@@ -26,7 +26,7 @@
 - [x] **Skills Integration**: Added skills data and rendering across all skins.
 - [x] **Classic Skin Optimization**: Compacted skills section in Classic skin.
 - [x] **Timeline Refinement**: Integrated Summary/Skills into the timeline flow; added "Projects" label and bounce animation to expand toggles.
-- [x] **PDF Update**: Included Skills section in PDF generation.
+- [x] **PDF Update**: Included Skills section in PDF generation; added explicit website link for offline viewing.
 - [ ] **Content Refresh**: Continue updating resume data and personal info.
 - [ ] **Visual Overhaul**: Implement new design elements and animations.
 - [ ] **Code Cleanup**: Remove any unused legacy code after updates.
