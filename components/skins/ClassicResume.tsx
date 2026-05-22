@@ -114,6 +114,11 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
     </div>
     <div className="mb-8">{parseFormattedText(data.summary)}</div>
 
+      <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Experience</h2>
+        {data.experience.map((exp, i) => renderExperience(exp, i))}
+      </div>
+
       {data.skills && data.skills.length > 0 && (
         <div className="mb-8 border-b-2 border-gray-200 dark:border-gray-700 pb-8">
             <h2 className="text-2xl font-bold mb-4">Skills</h2>
@@ -122,11 +127,6 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
             </div>
         </div>
       )}
-
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Experience</h2>
-        {data.experience.map((exp, i) => renderExperience(exp, i))}
-      </div>
 
       <div className="flex justify-between border-b-2 border-gray-200 dark:border-gray-700">
         <span>

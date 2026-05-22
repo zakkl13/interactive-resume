@@ -19,7 +19,7 @@ const generateHash = (str: string) => {
     return Math.abs(hash).toString(16).substring(0, 7).padEnd(7, '0');
 };
 
-type CommitType = 'job' | 'project' | 'education';
+type CommitType = 'job' | 'project' | 'education' | 'skills';
 
 interface CommitNode {
     id: string;
@@ -85,6 +85,20 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
         // * Previous Job
     });
 
+    // Skills (Commit on Main, between Experience and Education)
+    if (data.skills && data.skills.length > 0) {
+        commits.push({
+            id: 'skills',
+            hash: generateHash('skills'),
+            message: 'feat: skills.json',
+            date: "",
+            author: "Zakk",
+            type: 'skills',
+            data: data.skills,
+            onMainBranch: true
+        });
+    }
+
     // Education
     data.education.forEach((edu, eduIdx) => {
         commits.push({
@@ -144,33 +158,6 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
                             </div>
                             <div className="whitespace-pre-wrap font-sans text-sm md:text-base">
                                 {parseFormattedText(data.summary)}
-                            </div>
-                        </div>
-
-                        {/* Skills Box */}
-                        <div className="p-4 bg-gray-50 dark:bg-[#161b22] border border-gray-200 dark:border-[#30363d] rounded-md text-gray-800 dark:text-[#c9d1d9]">
-                             <div className="flex justify-between items-center mb-2 border-b border-gray-200 dark:border-[#30363d] pb-2">
-                                <span className="text-xs text-gray-500 dark:text-[#8b949e]">skills.json</span>
-                                <div className="flex gap-2">
-                                    <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                                    <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                                    <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
-                                </div>
-                            </div>
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 text-xs font-mono">
-                                {data.skills && data.skills.map((skill, idx) => (
-                                    <div key={idx}>
-                                        <div className="text-red-600 dark:text-[#ff7b72] mb-1">"{skill.category}": [</div>
-                                        <div className="pl-4 flex flex-wrap gap-1">
-                                            {skill.items.map((item, i) => (
-                                                <span key={i} className="text-blue-600 dark:text-[#a5d6ff]">
-                                                    "{item}"{i < skill.items.length - 1 ? "," : ""}
-                                                </span>
-                                            ))}
-                                        </div>
-                                        <div className="text-red-600 dark:text-[#ff7b72]">]{idx < data.skills!.length - 1 ? "," : ""}</div>
-                                    </div>
-                                ))}
                             </div>
                         </div>
                     </div>
@@ -256,6 +243,24 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
                                         {commit.type === 'education' && (
                                             <div className="text-sm">
                                                 <div className="text-gray-900 dark:text-[#c9d1d9]">{parseFormattedText((commit.data as Education).school)}</div>
+                                            </div>
+                                        )}
+
+                                        {commit.type === 'skills' && (
+                                            <div className="text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-mono">
+                                                {(commit.data as Skill[]).map((skill, idx) => (
+                                                    <div key={idx}>
+                                                        <div className="text-red-600 dark:text-[#ff7b72] mb-1">"{skill.category}": [</div>
+                                                        <div className="pl-4 flex flex-wrap gap-1">
+                                                            {skill.items.map((item, i) => (
+                                                                <span key={i} className="text-blue-600 dark:text-[#a5d6ff]">
+                                                                    "{item}"{i < skill.items.length - 1 ? "," : ""}
+                                                                </span>
+                                                            ))}
+                                                        </div>
+                                                        <div className="text-red-600 dark:text-[#ff7b72]">]{idx < (commit.data as Skill[]).length - 1 ? "," : ""}</div>
+                                                    </div>
+                                                ))}
                                             </div>
                                         )}
                                     </div>

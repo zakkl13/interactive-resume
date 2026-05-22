@@ -23,7 +23,7 @@ const SubDescriptionItem: React.FC<SubDescriptionItemProps> = ({ sub }) => {
             <div className={`absolute left-[21px] top-1.5 w-3 h-3 border-2 border-teal-500 dark:border-teal-400 rounded-full z-10 transition-colors ${isOpen ? 'bg-teal-500 dark:bg-teal-400' : 'bg-white dark:bg-slate-800'}`}></div>
             
             {/* Header / Toggle */}
-            <div 
+            <div
                 className="flex items-center gap-2 cursor-pointer group mb-2 select-none"
                 onClick={toggleOpen}
             >
@@ -34,6 +34,24 @@ const SubDescriptionItem: React.FC<SubDescriptionItemProps> = ({ sub }) => {
                     <FontAwesomeIcon icon={faChevronDown} />
                 </div>
             </div>
+
+            {/* Intro - always visible, using div instead of p to allow nested divs from tooltips */}
+            {sub.intro && (
+                <div className="text-sm text-slate-500 dark:text-slate-400 italic mb-3">
+                    {parseFormattedText(sub.intro)}
+                </div>
+            )}
+
+            {/* Tech Stack - always visible */}
+            {sub.techStack && (
+                <div className="flex flex-wrap gap-2 mb-3">
+                    {sub.techStack.split(',').map((tech, tIdx) => (
+                        <span key={tIdx} className="bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-semibold px-2.5 py-0.5 rounded border border-teal-100 dark:border-teal-800">
+                            {tech.trim()}
+                        </span>
+                    ))}
+                </div>
+            )}
 
             {/* Expandable Content */}
             <AnimatePresence>
@@ -46,24 +64,6 @@ const SubDescriptionItem: React.FC<SubDescriptionItemProps> = ({ sub }) => {
                         className="overflow-hidden"
                     >
                         <div className="pb-2"> {/* Padding for animation buffer */}
-                            {/* Intro - using div instead of p to allow nested divs from tooltips */}
-                            {sub.intro && (
-                                <div className="text-sm text-slate-500 dark:text-slate-400 italic mb-3">
-                                    {parseFormattedText(sub.intro)}
-                                </div>
-                            )}
-
-                            {/* Tech Stack */}
-                            {sub.techStack && (
-                                <div className="flex flex-wrap gap-2 mb-3">
-                                    {sub.techStack.split(',').map((tech, tIdx) => (
-                                        <span key={tIdx} className="bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 text-xs font-semibold px-2.5 py-0.5 rounded border border-teal-100 dark:border-teal-800">
-                                            {tech.trim()}
-                                        </span>
-                                    ))}
-                                </div>
-                            )}
-
                             <ul className="space-y-2 bg-slate-50 dark:bg-slate-700/50 p-4 rounded-lg border border-slate-100 dark:border-slate-600">
                                 {sub.bullets.map((bullet, bIdx) => (
                                     <li key={bIdx} className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed flex items-start">

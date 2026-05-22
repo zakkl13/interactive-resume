@@ -75,7 +75,7 @@ const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
                     {/* Vertical Line */}
                     <div className="absolute left-4 md:left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-teal-600 via-slate-300 dark:via-slate-700 to-transparent opacity-40"></div>
 
-                    {/* Summary & Skills Section (Timeline Item) */}
+                    {/* Summary Section (Timeline Item) */}
                     <motion.div variants={itemVariants} className="relative mb-16">
                         {/* Dot */}
                         <div 
@@ -112,30 +112,6 @@ const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
                                                 <div className="mt-4 text-slate-700 dark:text-slate-300 leading-relaxed text-lg">
                                                     {parseFormattedText(data.summary)}
                                                 </div>
-
-                                                {/* Divider */}
-                                                <div className="h-px bg-slate-100 dark:bg-slate-700 my-6"></div>
-
-                                                {/* Skills */}
-                                                <div>
-                                                    <h3 className="text-sm uppercase tracking-wider text-slate-400 dark:text-slate-500 font-bold mb-3 flex items-center gap-2">
-                                                        <FontAwesomeIcon icon={faCode} /> Skills
-                                                    </h3>
-                                                    <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
-                                                        {data.skills && data.skills.map((skill, idx) => (
-                                                            <div key={idx}>
-                                                                <h4 className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase mb-1.5">{skill.category}</h4>
-                                                                <div className="flex flex-wrap gap-1">
-                                                                    {skill.items.map((item, i) => (
-                                                                        <span key={i} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-md border border-slate-200 dark:border-slate-600">
-                                                                            {item}
-                                                                        </span>
-                                                                    ))}
-                                                                </div>
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
                                             </div>
                                         </motion.div>
                                     )}
@@ -154,93 +130,114 @@ const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
                         </motion.div>
 
                         <div className="space-y-12">
-                            {data.experience.map((exp, idx) => {
-                                const sectionId = `exp-${idx}`;
-                                const isExpanded = expandedSection === sectionId;
-                                
-                                return (
-                                    <motion.div 
-                                        key={idx} 
-                                        variants={itemVariants} 
-                                        className="relative"
-                                    >
-                                        {/* Dot */}
-                                        <div 
-                                            className={`absolute -left-[22px] md:-left-[30px] top-6 w-4 h-4 rounded-full z-10 cursor-pointer transition-all duration-300 ${isExpanded ? 'bg-teal-600 scale-125 shadow-[0_0_15px_rgba(13,148,136,0.6)]' : 'bg-[#FDFBF7] dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 hover:border-teal-500'}`}
-                                            onClick={() => toggleSection(sectionId)}
-                                        ></div>
+                            {data.experience.map((exp, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    variants={itemVariants}
+                                    className="relative"
+                                >
+                                    {/* Dot */}
+                                    <div className="absolute -left-[22px] md:-left-[30px] top-6 w-4 h-4 bg-[#FDFBF7] dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 rounded-full z-10"></div>
 
-                                        {/* Content */}
-                                        <div className="w-full">
-                                            <div 
-                                                className={`bg-white dark:bg-slate-800 rounded-xl border ${isExpanded ? 'border-teal-200 dark:border-teal-800 shadow-md shadow-teal-50 dark:shadow-teal-900/20' : 'border-slate-200 dark:border-slate-700 shadow-sm'} overflow-hidden cursor-pointer transition-all`}
-                                                onClick={() => toggleSection(sectionId)}
-                                            >
-                                                <div className="p-6 pb-2">
-                                                    <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
-                                                        <div>
-                                                            <h3 className="text-xl font-bold text-slate-900 dark:text-white">{exp.title}</h3>
-                                                            <div className="text-slate-500 dark:text-slate-400 font-medium mb-1">{parseFormattedText(exp.company)}</div>
-                                                        </div>
-                                                        <div className="text-teal-600 dark:text-teal-400 font-mono text-sm mt-1 md:mt-0 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full inline-block md:block w-fit whitespace-nowrap">
-                                                            {exp.duration}
-                                                        </div>
+                                    {/* Content */}
+                                    <div className="w-full">
+                                        <div className="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm overflow-hidden transition-all">
+                                            <div className="p-6 pb-2">
+                                                <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-2">
+                                                    <div>
+                                                        <h3 className="text-xl font-bold text-slate-900 dark:text-white">{exp.title}</h3>
+                                                        <div className="text-slate-500 dark:text-slate-400 font-medium mb-1">{parseFormattedText(exp.company)}</div>
                                                     </div>
-
-                                                    {/* Role Summary - Always visible */}
-                                                    {exp.roleSummary && (
-                                                        <div className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed pl-4 py-1">
-                                                            {parseFormattedText(exp.roleSummary)}
-                                                        </div>
-                                                    )}
-
-                                                    <div className="flex justify-between items-center mb-1">
-                                                        <span className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">Projects</span>
-                                                        {idx === 0 ? (
-                                                            <motion.div
-                                                                initial={{ y: 0 }}
-                                                                whileInView={{ y: [0, -20, 0, -10, 0, -5, 0] }}
-                                                                transition={{ duration: 2, delay: 1.6, ease: "easeInOut" }}
-                                                                viewport={{ once: true }}
-                                                            >
-                                                                <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-slate-400 dark:text-slate-500" />
-                                                            </motion.div>
-                                                        ) : (
-                                                            <div>
-                                                                <FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className="text-slate-400 dark:text-slate-500" />
-                                                            </div>
-                                                        )}
+                                                    <div className="text-teal-600 dark:text-teal-400 font-mono text-sm mt-1 md:mt-0 bg-teal-50 dark:bg-teal-900/30 px-3 py-1 rounded-full inline-block md:block w-fit whitespace-nowrap">
+                                                        {exp.duration}
                                                     </div>
                                                 </div>
-                                                
-                                                <AnimatePresence>
-                                                    {isExpanded && (
-                                                        <motion.div
-                                                            initial={{ height: 0, opacity: 0 }}
-                                                            animate={{ height: "auto", opacity: 1 }}
-                                                            exit={{ height: 0, opacity: 0 }}
-                                                            transition={{ duration: 0.3 }}
-                                                        >
-                                                            <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-700 relative">
-                                                                {/* Nested Timeline Line */}
-                                                                <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-slate-200 dark:bg-slate-700"></div>
 
-                                                                <div className="space-y-8 mt-6">
-                                                                    {exp.projects.map((proj, pIdx) => (
-                                                                        <SubDescriptionItem key={pIdx} sub={proj} />
+                                                {/* Role Summary - Always visible */}
+                                                {exp.roleSummary && (
+                                                    <div className="text-slate-600 dark:text-slate-300 text-sm mb-4 leading-relaxed pl-4 py-1">
+                                                        {parseFormattedText(exp.roleSummary)}
+                                                    </div>
+                                                )}
+
+                                                <div className="mb-1">
+                                                    <span className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase tracking-wider">Projects</span>
+                                                </div>
+                                            </div>
+
+                                            <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-700 relative">
+                                                {/* Nested Timeline Line */}
+                                                <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-slate-200 dark:bg-slate-700"></div>
+
+                                                <div className="space-y-8 mt-6">
+                                                    {exp.projects.map((proj, pIdx) => (
+                                                        <SubDescriptionItem key={pIdx} sub={proj} />
+                                                    ))}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Skills Section (Timeline Item) */}
+                    {data.skills && data.skills.length > 0 && (
+                        <motion.div variants={itemVariants} className="relative mb-16">
+                            {/* Dot */}
+                            <div
+                                className={`absolute -left-[22px] md:-left-[30px] top-6 w-4 h-4 rounded-full z-10 cursor-pointer transition-all duration-300 ${expandedSection === 'skills' ? 'bg-teal-600 scale-125 shadow-[0_0_15px_rgba(13,148,136,0.6)]' : 'bg-[#FDFBF7] dark:bg-slate-900 border-2 border-slate-400 dark:border-slate-600 hover:border-teal-500'}`}
+                                onClick={() => toggleSection('skills')}
+                            ></div>
+
+                            {/* Content */}
+                            <div className="w-full">
+                                <div
+                                    className={`bg-white dark:bg-slate-800 rounded-xl border ${expandedSection === 'skills' ? 'border-teal-200 dark:border-teal-800 shadow-md shadow-teal-50 dark:shadow-teal-900/20' : 'border-slate-200 dark:border-slate-700 shadow-sm'} overflow-hidden cursor-pointer transition-all`}
+                                    onClick={() => toggleSection('skills')}
+                                >
+                                    <div className="p-6 pb-2">
+                                        <div className="flex justify-between items-center mb-2">
+                                            <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                                                <FontAwesomeIcon icon={faCode} className="text-teal-600 dark:text-teal-400" />
+                                                Skills
+                                            </h3>
+                                            <FontAwesomeIcon icon={expandedSection === 'skills' ? faChevronUp : faChevronDown} className="text-slate-400 dark:text-slate-500" />
+                                        </div>
+                                    </div>
+
+                                    <AnimatePresence>
+                                        {expandedSection === 'skills' && (
+                                            <motion.div
+                                                initial={{ height: 0, opacity: 0 }}
+                                                animate={{ height: "auto", opacity: 1 }}
+                                                exit={{ height: 0, opacity: 0 }}
+                                                transition={{ duration: 0.3 }}
+                                            >
+                                                <div className="p-6 pt-0 border-t border-slate-100 dark:border-slate-700">
+                                                    <div className="mt-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+                                                        {data.skills.map((skill, idx) => (
+                                                            <div key={idx}>
+                                                                <h4 className="text-xs font-bold text-teal-600 dark:text-teal-400 uppercase mb-1.5">{skill.category}</h4>
+                                                                <div className="flex flex-wrap gap-1">
+                                                                    {skill.items.map((item, i) => (
+                                                                        <span key={i} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs rounded-md border border-slate-200 dark:border-slate-600">
+                                                                            {item}
+                                                                        </span>
                                                                     ))}
                                                                 </div>
                                                             </div>
-                                                        </motion.div>
-                                                    )}
-                                                </AnimatePresence>
-                                            </div>
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
-                        </div>
-                    </div>
+                                                        ))}
+                                                    </div>
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            </div>
+                        </motion.div>
+                    )}
 
                     {/* Education Section */}
                     <div className="mb-16">
