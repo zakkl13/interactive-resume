@@ -1,19 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import dynamic from 'next/dynamic';
 import { faFilePdf, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { resumeData } from "@/data/resumeData";
 import { DEFAULT_SKIN, RESUME_SKINS } from "@/components/skins";
-import { ResumePdf } from "@/components/PdfDocument";
 
-const PDFDownloadLink = dynamic(
-  () => import('@react-pdf/renderer').then((mod) => mod.PDFDownloadLink),
-  {
-    ssr: false,
-    loading: () => <span className="text-xs ml-2">...</span>,
-  }
-);
+const RESUME_PDF_URL = "/Zakk_Lefkowits_Resume.pdf";
 
 const ResumePage: React.FC = () => {
   const router = useRouter();
@@ -104,15 +96,16 @@ const ResumePage: React.FC = () => {
 
         <div className="h-6 w-px bg-gray-300 dark:bg-gray-600"></div>
 
-        <PDFDownloadLink
-          document={<ResumePdf data={resumeData} />}
-          fileName="Zakk_Lefkowits_Resume.pdf"
+        <a
+          href={RESUME_PDF_URL}
+          target="_blank"
+          rel="noopener noreferrer"
           className="text-gray-600 dark:text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors"
-          title="Download PDF"
+          title="View PDF resume"
+          aria-label="View PDF resume"
         >
-          {/* @ts-ignore - The render props signature of PDFDownloadLink is sometimes tricky with types, but simpler child works */}
           <FontAwesomeIcon icon={faFilePdf} size="lg" />
-        </PDFDownloadLink>
+        </a>
       </div>
 
       <CurrentSkinComponent data={resumeData} />

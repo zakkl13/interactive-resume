@@ -1,0 +1,45 @@
+{
+  "_comment": "Accepted, intentional divergences between data/resumeData.ts (web, canonical) and resume-pdf/resume.typ (PDF subset). Regenerate with: npm run resume:drift:accept. If the underlying text changes, the fingerprint won't match and the gate re-trips. Add a \"note\" to any entry to document why it diverges.",
+  "accepted": {
+    "summary": {
+      "fingerprint": "005bb93bf1f9",
+      "web": "Senior Software Engineer at Amazon Fire TV. 9 years in distributed systems, mobile-cloud architecture, and data engineering. Launched the Discovery Catalog data platform; previously shipped Continue Watching to 100M+ devices as client-side tech lead. Consistent record of championing the harder, better architectural decision to build robust systems at Amazon scale. Pushing agentic engineering practice at Fire TV; built and operate a self-iterating agent orchestrator shipping ~3x prior-year output of peer-reviewed code.",
+      "pdf": ""
+    },
+    "exp:0:summary": {
+      "fingerprint": "2d7a78201d22",
+      "web": "Tech lead for Fire TV Catalog Enrichment, previously client-side tech lead on Fire TV Partner Integrations. Promoted to Sr. Software Engineer (Q4 2022).",
+      "pdf": "Tech lead for Fire TV Catalog Enrichment, previously tech lead for Fire TV Partner Integrations. Promoted to Sr. Software Eng (Q4 2022)."
+    },
+    "exp:1:summary": {
+      "fingerprint": "17b69a41cb84",
+      "web": "Led cloud modernization initiatives for Global Top 10 insurance client, migrating legacy enterprise systems to AWS serverless and containerized architectures. Promoted to Senior Consultant (Q3 2019).",
+      "pdf": "Led cloud modernization initiatives for Global Top 10 insurance client. Promoted to Sr. Consultant (Q3 2019)."
+    },
+    "project:live tv integration": {
+      "fingerprint": "583cb3247eb1",
+      "web": "Live TV Integration",
+      "pdf": "(absent)"
+    },
+    "metric:web-only:9": {
+      "fingerprint": "ec43a953a368",
+      "web": "9",
+      "pdf": "(absent)"
+    },
+    "metric:web-only:40+": {
+      "fingerprint": "8399d7c0e016",
+      "web": "40+",
+      "pdf": "(absent)"
+    },
+    "metric:web-only:2x": {
+      "fingerprint": "e0a564519e4a",
+      "web": "2x",
+      "pdf": "(absent)"
+    },
+    "metric:web-only:2023": {
+      "fingerprint": "83ebf4074b85",
+      "web": "2023",
+      "pdf": "(absent)"
+    }
+  }
+}

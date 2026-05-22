@@ -1,0 +1,12 @@
+#!/bin/sh
+# Resume drift gate. Runs only when a resume content file is staged, so normal
+# commits are untouched. Bypass in a pinch with `git commit --no-verify`.
+if git diff --cached --name-only | grep -qE '^(data/resumeData\.ts|resume-pdf/resume\.typ)$'; then
+  echo "resume content staged — checking web/PDF drift…"
+  if ! npm run --silent resume:drift; then
+    echo
+    echo "Commit blocked by the resume drift gate."
+    echo "Align the files, or run: npm run resume:drift:accept"
+    exit 1
+  fi
+fi

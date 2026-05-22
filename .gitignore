@@ -30,3 +30,11 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# typescript
+*.tsbuildinfo
+
+# resume-pdf (Typst): vendored fonts + build output (committed PDF lives in /public)
+/resume-pdf/fonts/
+/resume-pdf/out/
+/resume-pdf/**/*.pdf
