@@ -27,4 +27,4 @@ export const RESUME_SKINS: Record<string, ResumeSkinDefinition> = {
     }
 };
 
-export const DEFAULT_SKIN = RESUME_SKINS.timeline;
+export const DEFAULT_SKIN = RESUME_SKINS.spec;
