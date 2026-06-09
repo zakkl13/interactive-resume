@@ -6,9 +6,16 @@ export interface ResumeData {
   linkedin: string,
   website: string,
   summary: string,
+  metrics?: Metric[];
   skills: Skill[];
   experience: Experience[],
   education: Education[]
+}
+
+export interface Metric {
+  value: string;
+  label: string;
+  note: string;
 }
 
 export interface Experience {
@@ -45,6 +52,14 @@ export const resumeData: ResumeData = {
   github: "https://github.com/zakkl13",
   website: "https://zakk.io/resume",
   summary: `Senior Software Engineer at {{bold text='Amazon Fire TV'}}. 9 years in distributed systems, mobile-cloud architecture, and data engineering. Launched the Discovery Catalog data platform; previously shipped Continue Watching to {{bold text='100M+ devices'}} as client-side tech lead. Consistent record of championing the harder, better architectural decision to build robust systems at Amazon scale. Pushing agentic engineering practice at Fire TV; built and operate a self-iterating agent orchestrator shipping {{bold text='~3x'}} prior-year output of peer-reviewed code.`,
+  metrics: [
+    { value: "100M+", label: "devices running my code", note: "Continue Watching client on Fire TV Devices" },
+    { value: "3x", label: "code output in 2026", note: "AI-powered Engineering" },
+    { value: "$1B", label: "payments / yr", note: "Legacy on-prem platform safely migrated to AWS ECS." },
+    { value: "50+", label: "partner launches", note: "Live TV and Continue Watching integration on Fire TV worldwide." },
+    { value: "9 yrs", label: "in production", note: "Distributed systems, mobile-cloud, data." },
+    { value: "200K", label: "peak TPS", note: "Transactions per second, ingesting Fire TV customer watch activity and consent" }
+  ],
   skills: [
     {
       category: "Languages & Technologies",

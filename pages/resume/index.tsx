@@ -69,7 +69,7 @@ const ResumePage: React.FC = () => {
   return (
     <div className="relative">
       {/* Skin Switcher Floating Control */}
-      <div className="fixed top-4 left-4 z-50 bg-white dark:bg-gray-800 p-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 opacity-80 hover:opacity-100 transition-opacity flex items-center gap-3">
+      <div className="fixed z-50 bottom-4 left-1/2 -translate-x-1/2 sm:bottom-auto sm:left-4 sm:translate-x-0 sm:top-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm p-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 opacity-100 sm:opacity-80 hover:opacity-100 transition-opacity flex items-center gap-3">
         <div className="flex items-center">
           <label className="text-sm font-semibold mr-2 text-gray-700 dark:text-gray-300">View:</label>
           <select 

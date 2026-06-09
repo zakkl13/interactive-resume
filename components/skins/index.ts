@@ -1,5 +1,6 @@
 import ClassicResume from "./ClassicResume";
 import GitResume from "./GitResume";
+import SpecSheetResume from "./SpecSheetResume";
 import TimelineResume from "./TimelineResume";
 import { ResumeSkinDefinition } from "./types";
 
@@ -18,6 +19,11 @@ export const RESUME_SKINS: Record<string, ResumeSkinDefinition> = {
         id: "git",
         name: "Git Log",
         component: GitResume
+    },
+    spec: {
+        id: "spec",
+        name: "Spec Sheet",
+        component: SpecSheetResume
     }
 };
 
