@@ -46,21 +46,38 @@
   name-size: 30pt,
   base-size: 10pt,
   paper-size: "us-letter",
-  margin: (x: 15mm, y: 12mm),
+  margin: (x: 15mm, y: 10mm),
   body,
 ) = {
   if type(accent-color) == str { accent-color = rgb(accent-color) }
 
   let fullname = author.firstname + " " + author.lastname
 
-  set document(author: fullname, title: fullname + " resume")
-  set text(font: font, size: base-size, fill: ink, fallback: true)
+  set document(
+    author: fullname,
+    title: fullname + " Resume",
+    keywords: (
+      "Senior Software Engineer",
+      "Distributed Systems",
+      "Data Engineering",
+      "Mobile-Cloud Architecture",
+      "LLM Applications",
+      "Agentic Engineering",
+      "Rust",
+      "Java",
+      "TypeScript",
+      "AWS",
+    ),
+  )
+  // hyphenate: false — ATS text extraction chokes on words split across
+  // lines with soft hyphens (e.g. "Compe-tencies"), breaking keyword matching.
+  set text(font: font, size: base-size, fill: ink, fallback: true, hyphenate: false)
   set page(paper: paper-size, margin: margin)
-  set par(spacing: 0.72em, justify: true, leading: 0.6em)
+  set par(spacing: 0.6em, justify: true, leading: 0.56em)
   set heading(numbering: none, outlined: false)
 
   // Section headers: accent label followed by a rule to the right edge.
-  show heading.where(level: 1): it => block(sticky: true, above: 1.0em, below: 0.55em)[
+  show heading.where(level: 1): it => block(sticky: true, above: 0.7em, below: 0.4em)[
     #grid(
       columns: (auto, 1fr),
       align: horizon,
@@ -89,10 +106,12 @@
   if "homepage" in author {
     items.push(citem(icons.globe, display-url(author.homepage), dest: author.homepage))
   }
+  // Show the handle, not the name again: recruiters and ATS parsers pull the
+  // profile from the visible text, and the name is already the header.
   if "linkedin" in author {
     items.push(citem(
       icons.linkedin,
-      fullname,
+      "in/" + author.linkedin,
       dest: "https://www.linkedin.com/in/" + author.linkedin,
     ))
   }
@@ -145,7 +164,7 @@
   title-link: none,
 ) = {
   let title-content = if title-link != none { link(title-link, title) } else { title }
-  block(above: 0.85em, below: 0.4em, breakable: false)[
+  block(above: 0.7em, below: 0.35em, breakable: false)[
     #grid(
       columns: (1fr, auto),
       align: (left + horizon, right + horizon),
@@ -165,6 +184,12 @@
   ]
 }
 
+// Top-of-page professional summary paragraph (under its own = Summary heading).
+#let resume-summary(body) = block(above: 0.2em, below: 0.4em)[
+  #set text(size: 9.5pt, weight: "light", fill: icon-fill)
+  #body
+]
+
 // Role summary line under a company entry (italic, muted).
 #let resume-lead(body) = block(above: 0.25em, below: 0.3em)[
   #set text(size: 9.5pt, style: "italic", fill: muted)
@@ -173,7 +198,7 @@
 
 // A project/initiative within an entry: bold title with accent tech stack on the right.
 #let resume-project(title, stack: "") = {
-  block(above: 0.6em, below: 0.1em, breakable: false)[
+  block(above: 0.5em, below: 0.1em, breakable: false)[
     #grid(
       columns: (1fr, auto),
       align: (left + horizon, right + horizon),
@@ -187,18 +212,22 @@
 // Bullet list under an entry.
 #let resume-item(body) = {
   set text(size: 9.5pt, weight: "light", fill: icon-fill)
-  set par(leading: 0.55em)
+  set par(leading: 0.52em)
   set list(indent: 0.6em, body-indent: 0.5em, marker: text(fill: default-accent, [•]))
-  block(above: 0.3em, below: 0.6em, body)
+  block(above: 0.3em, below: 0.5em, body)
 }
 
 // ---- Skills ----------------------------------------------------------------
-#let resume-skill-item(category, items) = block(below: 0.5em)[
+#let resume-skill-item(category, items) = block(below: 0.45em)[
   #grid(
     columns: (3fr, 9fr),
     column-gutter: 10pt,
     align: (left + top, left + top),
-    text(size: 10pt, weight: "bold", category),
+    // Ragged-right category only: justifying the narrow column stretches
+    // short lines ("Architecture   &   Core") once hyphenation is off. The
+    // wide value column stays justified so space compression keeps long
+    // skill lists on one line.
+    par(justify: false, text(size: 10pt, weight: "bold", category)),
     text(size: 10pt, weight: "light", items.join(", ")),
   )
 ]

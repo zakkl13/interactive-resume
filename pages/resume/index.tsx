@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
 import { faFilePdf, faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -52,10 +53,6 @@ const ResumePage: React.FC = () => {
     }
   }, [router.isReady, router.query.s]);
 
-  useEffect(() => {
-    document.title = 'Zakk\'s Resume';
-  });
-
   const handleSkinChange = (skinId: string) => {
     setCurrentSkinId(skinId);
     router.push({
@@ -68,6 +65,13 @@ const ResumePage: React.FC = () => {
 
   return (
     <div className="relative">
+      <Head>
+        <title>Resume | Zakk Lefkowits, Senior Software Engineer</title>
+        <meta name="description" content="Interactive resume of Zakk Lefkowits, Senior Software Engineer at Amazon Fire TV: distributed systems, data platforms, mobile-cloud architecture, and agentic engineering." />
+        <meta property="og:title" content="Resume | Zakk Lefkowits, Senior Software Engineer" />
+        <meta property="og:description" content="Distributed systems, data platforms, mobile-cloud architecture, and agentic engineering at Amazon Fire TV. Viewable in multiple skins, downloadable as PDF." />
+        <meta property="og:type" content="profile" />
+      </Head>
       {/* Skin Switcher Floating Control */}
       <div className="fixed z-50 bottom-4 left-1/2 -translate-x-1/2 sm:bottom-auto sm:left-4 sm:translate-x-0 sm:top-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm p-2 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 opacity-100 sm:opacity-80 hover:opacity-100 transition-opacity flex items-center gap-3">
         <div className="flex items-center">

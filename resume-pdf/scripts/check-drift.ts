@@ -55,6 +55,8 @@ function stripWeb(s: string): string {
 /** Strip Typst markup (bold, links, escapes) to plain text. */
 function stripTypst(s: string): string {
   return s
+    .replace(/#resume-summary\[([\s\S]*?)\]/g, '$1')
+    .replace(/#sym\.arrow\.r\b/g, '->')
     .replace(/#strong\[([^\]]*)\]/g, '$1')
     .replace(/#link\("[^"]*"\)\[([^\]]*)\]/g, '$1')
     .replace(/\*([^*]+)\*/g, '$1')

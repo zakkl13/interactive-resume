@@ -69,7 +69,7 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
                 <h2 className="text-4xl font-semibold mb-4">About</h2>
                 <div className="md:flex md:items-center mb-2 border-b pb-2">
                     <Image key="profilePhoto" className="mr-4" alt="profile pic" width={200} height={200} src={data.profilePhoto}></Image>
-                    <p className="text-lg leading-relaxed">{data.about}</p>
+                    <p className="text-lg leading-relaxed whitespace-pre-line">{data.about}</p>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-1 mb-1">
                     {data.photos.map((photo, index) => (

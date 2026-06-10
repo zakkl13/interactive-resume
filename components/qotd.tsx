@@ -19,7 +19,6 @@ const Qotd: React.FC = () => {
     }
 
     useEffect(() => {
-        console.log("Fetching");
         fetchData();
     }, [])
 
