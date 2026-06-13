@@ -38,6 +38,14 @@ const targets = paths.length
         { path: `/resume?s=${s}`, name: `resume-${s}-dark`, theme: "dark", viewport: DESKTOP },
         { path: `/resume?s=${s}`, name: `resume-${s}-mobile`, theme: "light", viewport: MOBILE },
       ]),
+      ...["/writing", "/writing/coloring-book-method"].flatMap((p) => {
+        const base = slug(p);
+        return [
+          { path: p, name: `${base}-light`, theme: "light", viewport: DESKTOP },
+          { path: p, name: `${base}-dark`, theme: "dark", viewport: DESKTOP },
+          { path: p, name: `${base}-mobile`, theme: "light", viewport: MOBILE },
+        ];
+      }),
     ];
 
 function slug(p) {

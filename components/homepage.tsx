@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { faFile } from "@fortawesome/free-solid-svg-icons";
+import { faFile, faPenNib } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { HomeData } from '../data/homeData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -59,6 +59,7 @@ const HomePage: React.FC<HomePageProps> = ({ data }) => {
                 <h2 className="text-4xl font-semibold mb-4">Quick Links</h2>
                 <ul className="flex-col flex md:flex-row md:items-center place-content-evenly">
                     {renderLink(faFile, "Resume", data.resume, false)}
+                    {renderLink(faPenNib, "Writing", "/writing", false)}
                     {renderLink(faLinkedin, "LinkedIn", data.linkedin)}
                     {renderLink(faGithub, "GitHub", data.github)}
                 </ul>

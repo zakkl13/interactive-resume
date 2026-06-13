@@ -22,6 +22,9 @@
 # automated review screenshots
 /screenshots/
 
+# RSS feed is generated on build (scripts/build-rss.mjs)
+/public/rss.xml
+
 # debug
 npm-debug.log*
 yarn-debug.log*

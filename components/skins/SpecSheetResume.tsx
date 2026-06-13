@@ -209,7 +209,7 @@ const SpecSheetResume: React.FC<ResumeSkinProps> = ({ data }) => {
                         <div className="rz-hero-right">
                             <div className="rz-portrait">
                                 <img
-                                    src="/zakkprofile.jpg"
+                                    src="/zheadshot.png"
                                     alt="Zakk Lefkowits, portrait"
                                     className="rz-portrait-img"
                                 />
