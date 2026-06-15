@@ -13,7 +13,7 @@ const ResumePage: React.FC = () => {
         <meta property="og:title" content="Zakk Lefkowits | zakk.io" />
         <meta property="og:description" content="Senior Software Engineer at Amazon Fire TV. Distributed systems, data platforms, and agentic engineering." />
         <meta property="og:type" content="website" />
-        <meta property="og:image" content="https://zakk.io/zheadshot.jpg" />
+        <meta property="og:image" content="https://zakk.io/zheadshot.png" />
       </Head>
       <div className="max-w-5xl mx-auto">
         <HomePage data={homeDefault} />
