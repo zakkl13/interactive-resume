@@ -1,0 +1,7 @@
+# All crawlers are welcome, including AI/LLM crawlers
+# (GPTBot, ClaudeBot, Google-Extended, PerplexityBot, etc.).
+
+User-agent: *
+Allow: /
+
+Sitemap: https://zakk.io/sitemap.xml

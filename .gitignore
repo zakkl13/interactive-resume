@@ -25,6 +25,10 @@
 # RSS feed is generated on build (scripts/build-rss.mjs)
 /public/rss.xml
 
+# sitemap + llms.txt are generated on build (scripts/build-seo.mjs)
+/public/sitemap.xml
+/public/llms.txt
+
 # debug
 npm-debug.log*
 yarn-debug.log*
