@@ -109,26 +109,26 @@ export const resumeData: ResumeData = {
       title: "Senior Software Engineer",
       company: "Amazon, {{hover text='Fire TV' context='Fire TV is a leading streaming media platform having sold over 200 million devices to date.'}}",
       duration: "April 2020 - Present",
-      roleSummary: "Tech lead for Fire TV Catalog Enrichment, previously client-side tech lead on Fire TV Partner Integrations. Promoted to Sr. Software Engineer (Q4 2022).",
+      roleSummary: "Tech lead for Fire TV Catalog data platforms and enrichment, previously client-side tech lead on Fire TV Partner Integrations. Promoted to Sr. Software Engineer (Q4 2022).",
       projects: [
         {
           title: "Discovery Catalog Platform",
           intro: `Designed and built a governed data platform extending the Fire TV Catalog beyond streaming-provider feeds to new enriched data sources (e.g., Wikipedia articles, text scene descriptions), replacing fragmented ad-hoc pulls from multiple downstream teams.`,
-          techStack: "Data Engineering, Distributed Systems",
+          techStack: "Distributed Systems, Data Engineering, Java, S3, DynamoDB, RocksDB",
           bullets: [
-            `Drove the architectural decision to publish to a separate output stream rather than extending the core catalog, unlocking a {{bold text='10x data-volume ceiling'}} and a faster schema-evolution path for novel data types.`,
-            `Formalized a platform model where consuming teams own domain-specific extraction logic on Catalog Engineering's governed rails (lifecycle, linking, publication).`,
-            `Aligned the Fire TV Search team to build its Prime Video scene-data curation app on the new platform, setting precedent for centralized data governance across downstream teams.`,
+            `Drove a separate publication architecture to protect the ~150 GB customer-critical core catalog from projected {{bold text='terabyte-scale'}} ancillary data and enable a forward-compatible schema contract.`,
+            `Built a fragment-based architecture that keeps large raw payloads in S3 and hydrates them only when needed for curation, linking, and publication.`,
+            `Aligned the Fire TV Search team to build its Prime Video scene-data curation app on Discovery Catalog rather than create another ad-hoc ingestion.`,
             `Delivered to production solo in three months against a documented 4.5-month estimate. Enabled by a production-like integration test harness and agentic engineering.`
           ]
         },
         {
-          title: "LLM Genre Classification",
-          intro: `LLM enrichment embedded in the Fire TV Catalog's latency-sensitive synchronous stream-processing pipeline, led by a genre classifier that replaced unreliable provider data and the eval methodology (CMAR) that won customer-team adoption.`,
+          title: "Catalog Metadata Distillation & LLM Enrichment",
+          intro: `Built a metadata distillation capability that attaches canonical values directly to content clusters, moving value selection out of downstream systems; launched with LLM-curated genres.`,
           techStack: "LLM Applications & Evaluation, AWS Bedrock, Data Engineering",
           bullets: [
-            `Built an LLM genre classifier embedded in the catalog's synchronous stream-processing pipeline at {{bold text='~$0.001 per entity'}}; engineered an eligibility filter scoping inference to the ~5% of incoming updates most likely to surface on customer screens, keeping long-tail updates off the latency-sensitive critical path.`,
-            `Invented {{bold text='CMAR (Catalog Metadata Acceptance Rate)'}}: a measurement methodology using an LLM judge calibrated against PM ratings (>90% agreement on a 10K-entity sample) to validate enrichment quality. Classifier hit {{bold text='95% CMAR vs. 82% baseline'}}; the metric earned PM confidence and unlocked downstream customer-team adoption of LLM-classified genre values.`,
+            `Built an LLM genre classifier within Fire TV's ~100M-entity stateful incremental catalog pipeline at {{bold text='~$0.001 per entity'}}; filtered inference to the ~5% of updates most likely to reach customer screens, protecting end-to-end latency.`,
+            `Invented {{bold text='CMAR (Catalog Metadata Acceptance Rate)'}}: an LLM-judge evaluation applied to 10K catalog entities after achieving >90% agreement with PM ratings on a 200-item calibration set. Classifier hit {{bold text='95% CMAR vs. 82% baseline'}}; the metric earned PM confidence and unlocked downstream customer-team adoption.`,
             `Tech lead and design approver on subsequent enrichment features (location extraction from linear-station metadata, image metadata extraction) shipped by mid-level engineers under reduced headcount; core contributor to the catalog org's shared Bedrock integration library (multi-account rate cycling, prompt construction, JSON parsing, retry, metrics).`
           ]
         },

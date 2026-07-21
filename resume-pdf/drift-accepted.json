@@ -2,9 +2,9 @@
   "_comment": "Accepted, intentional divergences between data/resumeData.ts (web, canonical) and resume-pdf/resume.typ (PDF subset). Regenerate with: npm run resume:drift:accept. If the underlying text changes, the fingerprint won't match and the gate re-trips. Add a \"note\" to any entry to document why it diverges.",
   "accepted": {
     "exp:0:summary": {
-      "fingerprint": "b795ebc28eae",
-      "web": "Tech lead for Fire TV Catalog Enrichment, previously client-side tech lead on Fire TV Partner Integrations. Promoted to Sr. Software Engineer (Q4 2022).",
-      "pdf": "Tech lead for Catalog Enrichment, previously client-side tech lead on Partner Integrations. Promoted to Sr. Software Engineer (Q4 2022).",
+      "fingerprint": "9357b737d921",
+      "web": "Tech lead for Fire TV Catalog data platforms and enrichment, previously client-side tech lead on Fire TV Partner Integrations. Promoted to Sr. Software Engineer (Q4 2022).",
+      "pdf": "Tech lead for Catalog data platforms and enrichment, previously client-side tech lead on Partner Integrations. Promoted to Sr. Software Engineer (Q4 2022).",
       "note": "PDF drops the two redundant 'Fire TV' mentions (company line above already says Amazon, Fire TV) so the lead fits one line; needed for the one-page budget with the Summary section."
     },
     "exp:1:summary": {
