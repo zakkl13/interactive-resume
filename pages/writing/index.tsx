@@ -68,7 +68,6 @@ const WritingIndex: React.FC<WritingIndexProps> = ({ essays }) => {
           </div>
 
           <footer className="wr-footer">
-            <Link href={LINKS.resume}>Resume</Link>
             <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
               GitHub
             </a>

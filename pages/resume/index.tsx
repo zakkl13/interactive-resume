@@ -67,6 +67,8 @@ const ResumePage: React.FC = () => {
     <div className="relative">
       <Head>
         <title>Resume | Zakk Lefkowits, Senior Software Engineer</title>
+        <meta name="robots" content="noindex, nofollow, noarchive" />
+        <meta name="googlebot" content="noindex, nofollow, noarchive" />
         <meta name="description" content="Interactive resume of Zakk Lefkowits, Senior Software Engineer at Amazon Fire TV: distributed systems, data platforms, mobile-cloud architecture, and agentic engineering." />
         <meta property="og:title" content="Resume | Zakk Lefkowits, Senior Software Engineer" />
         <meta property="og:description" content="Distributed systems, data platforms, mobile-cloud architecture, and agentic engineering at Amazon Fire TV. Viewable in multiple skins, downloadable as PDF." />

@@ -3,7 +3,6 @@ import Head from "next/head";
 
 // Site chrome links shared across the writing section.
 export const LINKS = {
-  resume: "/resume",
   writing: "/writing",
   github: "https://github.com/zakkl13",
   linkedin: "https://www.linkedin.com/in/zakklefkowits/",

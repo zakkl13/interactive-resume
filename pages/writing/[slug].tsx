@@ -123,7 +123,6 @@ const EssayPage: React.FC<EssayPageProps> = ({ essay }) => {
                 reviews.
               </div>
               <div className="wr-bio-links">
-                <Link href={LINKS.resume}>Resume</Link>
                 <a href={LINKS.github} target="_blank" rel="noopener noreferrer">
                   GitHub
                 </a>

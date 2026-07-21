@@ -26,7 +26,7 @@ function loadEssays() {
 }
 
 function buildSitemap(essays) {
-  const staticUrls = [`${SITE}/`, `${SITE}/resume`, `${SITE}/writing`].map(
+  const staticUrls = [`${SITE}/`, `${SITE}/writing`].map(
     (loc) => `  <url>\n    <loc>${loc}</loc>\n  </url>`
   );
   const essayUrls = essays.map(
@@ -52,8 +52,6 @@ function buildLlmsTxt(essays) {
 ## Pages
 
 - [Home](${SITE}/): About Zakk, with links to GitHub and LinkedIn.
-- [Resume](${SITE}/resume): Interactive resume. Experience at Amazon Fire TV and CapTech Consulting; skills across Rust, Java, Kotlin, TypeScript, AWS, distributed systems, data engineering, and agentic engineering; B.S. Computer Science from Virginia Tech.
-- [Resume PDF](${SITE}/Zakk_Lefkowits_Resume.pdf): One-page PDF version of the resume.
 - [Writing](${SITE}/writing): Essays on software engineering, AI engineering, and agents. RSS feed at ${SITE}/rss.xml.
 
 ## Essays
@@ -72,5 +70,5 @@ fs.mkdirSync(path.dirname(SITEMAP_OUT), { recursive: true });
 fs.writeFileSync(SITEMAP_OUT, buildSitemap(essays), "utf8");
 fs.writeFileSync(LLMS_OUT, buildLlmsTxt(essays), "utf8");
 console.log(
-  `build-seo: wrote sitemap.xml (${3 + essays.length} urls) and llms.txt (${essays.length} essay(s))`
+  `build-seo: wrote sitemap.xml (${2 + essays.length} urls) and llms.txt (${essays.length} essay(s))`
 );
