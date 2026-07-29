@@ -5,6 +5,7 @@ summary: "I built software while holding my newborn."
 tags: ["ai-engineering", "agents", "personal-software"]
 coverImage: "/essays/software-of-our-own-cover.jpg"
 coverAlt: "Two sketched hands holding phones: one creating an app with a coding agent, the other using the finished personal software"
+hideImageCaptions: true
 ---
 
 One hand held a sleeping baby. The other held my phone. Over a few weeks of stolen minutes, I built a bespoke household management app my wife and I now run our home on. I built the MVP during one nap; we were using it that afternoon and when we wanted it to track the baby too I added new features during a night feed. Built it, used it, changed it, all from the couch. No laptop, no IDE, no team of engineers.
