@@ -347,6 +347,12 @@ const WritingShell: React.FC<{ children: React.ReactNode }> = ({ children }) => 
           color: var(--wr-ink-soft);
           font-style: italic;
         }
+        .wr-prose hr {
+          height: 1px;
+          background: var(--wr-rule-fine);
+          border: 0;
+          margin: 2.75em 0;
+        }
         .wr-prose img {
           max-width: 100%;
           height: auto;

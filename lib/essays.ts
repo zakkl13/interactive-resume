@@ -14,6 +14,7 @@ export interface EssayFrontmatter {
   originalUrl?: string;
   coverImage?: string; // optional header image rendered above the title
   coverAlt?: string;
+  hideImageCaptions?: boolean;
   draft?: boolean;
 }
 

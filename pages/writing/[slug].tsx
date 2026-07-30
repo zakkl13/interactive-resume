@@ -16,13 +16,13 @@ interface EssayPageProps {
 
 const pad2 = (n: number): string => n.toString().padStart(2, "0");
 
-// Render markdown images as captioned figures (alt text doubles as the caption),
-// and unwrap the paragraph react-markdown would otherwise nest the figure inside.
-const markdownComponents = {
+// Render markdown images as figures, with optional captions, and unwrap the
+// paragraph react-markdown would otherwise nest the figure inside.
+const markdownComponentsFor = (hideImageCaptions = false) => ({
   img: ({ src, alt }: { src?: string; alt?: string }) => (
     <figure className="wr-figure">
       <img src={src} alt={alt ?? ""} loading="lazy" />
-      {alt ? <figcaption>{alt}</figcaption> : null}
+      {!hideImageCaptions && alt ? <figcaption>{alt}</figcaption> : null}
     </figure>
   ),
   p: ({ node, children }: { node?: any; children?: React.ReactNode }) => {
@@ -32,7 +32,7 @@ const markdownComponents = {
     }
     return <p>{children}</p>;
   },
-};
+});
 
 const EssayPage: React.FC<EssayPageProps> = ({ essay }) => {
   const url = `${SITE}/writing/${essay.slug}`;
@@ -96,7 +96,7 @@ const EssayPage: React.FC<EssayPageProps> = ({ essay }) => {
             <ReactMarkdown
               remarkPlugins={[remarkGfm]}
               rehypePlugins={[rehypeHighlight]}
-              components={markdownComponents}
+              components={markdownComponentsFor(essay.hideImageCaptions)}
             >
               {essay.content}
             </ReactMarkdown>
