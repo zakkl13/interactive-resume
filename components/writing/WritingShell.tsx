@@ -25,12 +25,6 @@ const WritingShell: React.FC<{ children: React.ReactNode }> = ({ children }) => 
   return (
     <>
       <Head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@600;700&family=JetBrains+Mono:wght@500&display=swap"
-        />
         <link rel="alternate" type="application/rss+xml" title="Zakk Lefkowits: Writing" href="/rss.xml" />
       </Head>
       <div className="wr-skin">

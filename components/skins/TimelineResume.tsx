@@ -3,6 +3,7 @@ import { ResumeSkinProps } from "./types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faHome, faLocationDot, faChevronDown, faChevronUp, faBriefcase, faGraduationCap, faUser, faChevronRight, faCode } from "@fortawesome/free-solid-svg-icons";
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
+import Image from "next/image";
 import Link from "next/link";
 import { parseFormattedText } from "@/utils/formatter";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -261,7 +262,7 @@ const TimelineResume: React.FC<ResumeSkinProps> = ({ data }) => {
                                     <div className="bg-white dark:bg-slate-800 w-full p-6 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-teal-200 dark:hover:border-teal-800 shadow-sm transition-colors">
                                         <div className="flex flex-col md:flex-row items-center md:items-start gap-4">
                                             <div className="w-16 h-16 bg-slate-50 dark:bg-slate-700 rounded-lg p-2 flex items-center justify-center shrink-0 border border-slate-100 dark:border-slate-600">
-                                                <img src={edu.image} alt={edu.school} className="max-w-full max-h-full object-contain" />
+                                                <Image src={edu.image} alt={edu.school} width={64} height={64} className="max-w-full max-h-full object-contain" />
                                             </div>
                                             <div className="text-center md:text-left">
                                                 <h3 className="text-xl font-bold text-slate-900 dark:text-white">{edu.degree}</h3>

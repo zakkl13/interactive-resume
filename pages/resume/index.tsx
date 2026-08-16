@@ -10,7 +10,6 @@ const RESUME_PDF_URL = "/Zakk_Lefkowits_Resume.pdf";
 
 const ResumePage: React.FC = () => {
   const router = useRouter();
-  const [currentSkinId, setCurrentSkinId] = useState(DEFAULT_SKIN.id);
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
@@ -18,13 +17,12 @@ const ResumePage: React.FC = () => {
     const savedTheme = localStorage.getItem('theme');
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
-    if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove('dark');
-    }
+    const shouldUseDarkMode = savedTheme === 'dark' || (!savedTheme && systemPrefersDark);
+
+    document.documentElement.classList.toggle('dark', shouldUseDarkMode);
+    const frameId = window.requestAnimationFrame(() => setIsDarkMode(shouldUseDarkMode));
+
+    return () => window.cancelAnimationFrame(frameId);
   }, []);
 
   const toggleTheme = () => {
@@ -39,22 +37,12 @@ const ResumePage: React.FC = () => {
     }
   };
 
-  useEffect(() => {
-    if (router.isReady) {
-      const skinParam = router.query.s;
-      if (typeof skinParam === 'string' && RESUME_SKINS[skinParam]) {
-        setCurrentSkinId(skinParam);
-      } else {
-        // Fallback to default if param is missing or invalid
-        // logic: Only reset if we are ensuring URL dictates state. 
-        // If we want /resume to be default, we can set it here.
-        // But initial state is already DEFAULT_SKIN.id.
-      }
-    }
-  }, [router.isReady, router.query.s]);
+  const skinParam = router.query.s;
+  const currentSkinId = typeof skinParam === 'string' && RESUME_SKINS[skinParam]
+    ? skinParam
+    : DEFAULT_SKIN.id;
 
   const handleSkinChange = (skinId: string) => {
-    setCurrentSkinId(skinId);
     router.push({
       pathname: router.pathname,
       query: { ...router.query, s: skinId },

@@ -21,6 +21,8 @@ const pad2 = (n: number): string => n.toString().padStart(2, "0");
 const markdownComponentsFor = (hideImageCaptions = false) => ({
   img: ({ src, alt }: { src?: string; alt?: string }) => (
     <figure className="wr-figure">
+      {/* Image dimensions vary with author-supplied Markdown content. */}
+      {/* eslint-disable-next-line @next/next/no-img-element */}
       <img src={src} alt={alt ?? ""} loading="lazy" />
       {!hideImageCaptions && alt ? <figcaption>{alt}</figcaption> : null}
     </figure>
@@ -55,7 +57,7 @@ const EssayPage: React.FC<EssayPageProps> = ({ essay }) => {
   return (
     <>
       <Head>
-        <title>{essay.title} | Zakk Lefkowits</title>
+        <title>{`${essay.title} | Zakk Lefkowits`}</title>
         <meta name="description" content={essay.summary} />
         <link rel="canonical" href={url} />
         <meta property="og:title" content={essay.title} />
@@ -80,6 +82,8 @@ const EssayPage: React.FC<EssayPageProps> = ({ essay }) => {
           </Link>
 
           {essay.coverImage && (
+            // Cover dimensions are supplied by essay frontmatter at runtime.
+            // eslint-disable-next-line @next/next/no-img-element
             <img
               className="wr-cover"
               src={essay.coverImage}

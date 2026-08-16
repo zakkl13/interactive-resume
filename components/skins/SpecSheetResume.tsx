@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 import { ResumeSkinProps } from "./types";
 import { ResumeData, Experience, Project } from "@/data/resumeData";
 
@@ -171,14 +172,6 @@ const SectionHead: React.FC<{ num: string; name: string }> = ({ num, name }) => 
 const SpecSheetResume: React.FC<ResumeSkinProps> = ({ data }) => {
     return (
         <>
-            <Head>
-                <link rel="preconnect" href="https://fonts.googleapis.com" />
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-                <link
-                    rel="stylesheet"
-                    href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;600;700;800&family=JetBrains+Mono:wght@500&display=swap"
-                />
-            </Head>
             <div className="rz-skin">
                 <div className="rz-accent-bar" aria-hidden="true" />
 
@@ -208,9 +201,11 @@ const SpecSheetResume: React.FC<ResumeSkinProps> = ({ data }) => {
                         </div>
                         <div className="rz-hero-right">
                             <div className="rz-portrait">
-                                <img
+                                <Image
                                     src="/zheadshot.png"
                                     alt="Zakk Lefkowits, portrait"
+                                    fill
+                                    sizes="(max-width: 900px) 120px, 210px"
                                     className="rz-portrait-img"
                                 />
                             </div>
@@ -247,9 +242,42 @@ const SpecSheetResume: React.FC<ResumeSkinProps> = ({ data }) => {
                         </div>
                     </section>
 
+                    <section className="rz-independent-section">
+                        <SectionHead num="§ 04" name="INDEPENDENT WORK" />
+                        <div className="rz-callout-grid">
+                            <Link className="rz-callout" href="/writing">
+                                <span className="rz-callout-index">01</span>
+                                <span className="rz-callout-meta">FIELD NOTES / ESSAYS</span>
+                                <span className="rz-callout-arrow" aria-hidden="true">↗</span>
+                                <h3 className="rz-callout-title">Writing</h3>
+                                <p className="rz-callout-copy">
+                                    Essays on software engineering, AI agents, and the craft of making
+                                    software of our own.
+                                </p>
+                                <span className="rz-callout-action">READ THE WRITING INDEX</span>
+                            </Link>
+                            <a
+                                className="rz-callout"
+                                href="https://github.com/zakkl13/little-living-apps"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <span className="rz-callout-index">02</span>
+                                <span className="rz-callout-meta">OPEN SOURCE / MIT</span>
+                                <span className="rz-callout-arrow" aria-hidden="true">↗</span>
+                                <h3 className="rz-callout-title">Little Living Apps</h3>
+                                <p className="rz-callout-copy">
+                                    Text an idea; an agent builds the app, ships it to a host you own,
+                                    and stays around to maintain it.
+                                </p>
+                                <span className="rz-callout-action">EXPLORE THE REPOSITORY</span>
+                            </a>
+                        </div>
+                    </section>
+
                     {data.skills && data.skills.length > 0 && (
                         <section className="rz-skills-section">
-                            <SectionHead num="§ 04" name="SPECIFICATIONS" />
+                            <SectionHead num="§ 05" name="SPECIFICATIONS" />
                             <div className="rz-skills-grid">
                                 {data.skills.map((s, i) => (
                                     <div key={i} className="rz-skill-col">
@@ -272,7 +300,7 @@ const SpecSheetResume: React.FC<ResumeSkinProps> = ({ data }) => {
                     )}
 
                     <section className="rz-edu-section">
-                        <SectionHead num="§ 05" name="EDUCATION" />
+                        <SectionHead num="§ 06" name="EDUCATION" />
                         {data.education.map((edu, i) => {
                             const schoolParts = edu.school.split(";").map((p) => p.trim());
                             const schoolName = schoolParts[0] || edu.school;
@@ -433,6 +461,7 @@ const SpecSheetResume: React.FC<ResumeSkinProps> = ({ data }) => {
                 .rz-portrait {
                     aspect-ratio: 4 / 5;
                     width: 100%;
+                    position: relative;
                     border: 1px solid var(--rz-ink);
                     background: var(--rz-paper-2);
                     overflow: hidden;
@@ -740,6 +769,88 @@ const SpecSheetResume: React.FC<ResumeSkinProps> = ({ data }) => {
                     letter-spacing: 0.06em;
                 }
 
+                .rz-independent-section { margin-top: 56px; }
+                .rz-callout-grid {
+                    display: grid;
+                    grid-template-columns: repeat(2, 1fr);
+                    border-top: 2px solid var(--rz-ink);
+                    border-left: 1px solid var(--rz-ink);
+                }
+                .rz-callout {
+                    min-height: 232px;
+                    padding: 20px;
+                    border-right: 1px solid var(--rz-ink);
+                    border-bottom: 1px solid var(--rz-ink);
+                    display: grid;
+                    grid-template-columns: auto 1fr auto;
+                    grid-template-rows: auto auto 1fr auto;
+                    gap: 18px 14px;
+                    background: var(--rz-paper);
+                    transition: background-color 160ms ease, color 160ms ease;
+                }
+                .rz-callout:hover,
+                .rz-callout:focus-visible {
+                    background: var(--rz-ink);
+                    color: var(--rz-paper);
+                    outline: none;
+                }
+                .rz-callout-index {
+                    grid-column: 1;
+                    font-size: 11px;
+                    font-weight: 700;
+                    letter-spacing: 0.12em;
+                    color: var(--rz-accent);
+                }
+                .rz-callout-meta {
+                    grid-column: 2;
+                    font-size: 10.5px;
+                    font-weight: 700;
+                    letter-spacing: 0.16em;
+                    color: var(--rz-ink-mute);
+                    text-transform: uppercase;
+                }
+                .rz-callout-arrow {
+                    grid-column: 3;
+                    font-size: 20px;
+                    line-height: 0.75;
+                    color: var(--rz-accent);
+                    transition: transform 160ms ease;
+                }
+                .rz-callout:hover .rz-callout-arrow,
+                .rz-callout:focus-visible .rz-callout-arrow { transform: translate(2px, -2px); }
+                .rz-callout-title {
+                    grid-column: 1 / -1;
+                    font-size: clamp(28px, 4vw, 46px);
+                    font-weight: 800;
+                    letter-spacing: -0.025em;
+                    line-height: 0.95;
+                    color: var(--rz-ink);
+                }
+                .rz-callout-copy {
+                    grid-column: 1 / -1;
+                    max-width: 48ch;
+                    font-size: 14.5px;
+                    line-height: 1.5;
+                    color: var(--rz-ink-soft);
+                }
+                .rz-callout-action {
+                    grid-column: 1 / -1;
+                    align-self: end;
+                    width: fit-content;
+                    padding-bottom: 2px;
+                    border-bottom: 1px solid var(--rz-accent);
+                    font-size: 10.5px;
+                    font-weight: 700;
+                    letter-spacing: 0.14em;
+                    color: var(--rz-accent);
+                }
+                .rz-callout:hover .rz-callout-meta,
+                .rz-callout:focus-visible .rz-callout-meta { color: var(--rz-paper); opacity: 0.68; }
+                .rz-callout:hover .rz-callout-title,
+                .rz-callout:hover .rz-callout-copy,
+                .rz-callout:focus-visible .rz-callout-title,
+                .rz-callout:focus-visible .rz-callout-copy { color: var(--rz-paper); }
+
                 .rz-edu-section { margin-top: 56px; }
                 .rz-edu-row {
                     display: grid;
@@ -874,6 +985,8 @@ const SpecSheetResume: React.FC<ResumeSkinProps> = ({ data }) => {
                     .rz-bullets { padding-left: 36px; }
                     .rz-skills-grid { grid-template-columns: 1fr; }
                     .rz-skill-col { border-right: 0; border-bottom: 1px solid var(--rz-rule-soft); padding: 16px 0; }
+                    .rz-callout-grid { grid-template-columns: 1fr; }
+                    .rz-callout { min-height: 210px; }
                     .rz-edu-row { grid-template-columns: 1fr; }
                     .rz-edu-right { text-align: left; }
                     .rz-tooltip { white-space: normal; max-width: 220px; }

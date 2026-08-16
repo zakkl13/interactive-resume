@@ -250,11 +250,11 @@ const GitResume: React.FC<ResumeSkinProps> = ({ data }) => {
                                             <div className="text-sm grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 font-mono">
                                                 {(commit.data as Skill[]).map((skill, idx) => (
                                                     <div key={idx}>
-                                                        <div className="text-red-600 dark:text-[#ff7b72] mb-1">"{skill.category}": [</div>
+                                                        <div className="text-red-600 dark:text-[#ff7b72] mb-1">&quot;{skill.category}&quot;: [</div>
                                                         <div className="pl-4 flex flex-wrap gap-1">
                                                             {skill.items.map((item, i) => (
                                                                 <span key={i} className="text-blue-600 dark:text-[#a5d6ff]">
-                                                                    "{item}"{i < skill.items.length - 1 ? "," : ""}
+                                                                    &quot;{item}&quot;{i < skill.items.length - 1 ? "," : ""}
                                                                 </span>
                                                             ))}
                                                         </div>

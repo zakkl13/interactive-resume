@@ -4,6 +4,7 @@ import { faEnvelope, faHome, faLocationDot, faCode } from "@fortawesome/free-sol
 import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { Experience, Education, Project, Skill, ResumeData } from "@/data/resumeData";
 import { parseFormattedText } from "@/utils/formatter";
+import Image from "next/image";
 import Link from "next/link";
 
 export interface ResumeProps {
@@ -133,7 +134,7 @@ const Resume: React.FC<ResumeProps> = ({data}) => {
             <h2 className="text-2xl font-bold mb-4">Education</h2>
             {data.education.map((edu, i) => renderEducation(edu, i))}
         </span>
-        <img className="align-center" src={data.education[0].image} style={{
+        <Image className="align-center" src={data.education[0].image} alt={`${data.education[0].school} mark`} width={150} height={150} style={{
             height: "150px",
             width: "150px"
         }} />
