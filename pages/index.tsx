@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import HomePage from "@/components/homepage";
-import { homeDefault } from "@/data/homeData";
+import { homeData } from "@/data/homeData";
 
 const SITE = "https://zakk.io";
 
@@ -12,19 +12,12 @@ const personJsonLd = {
   name: "Zakk Lefkowits",
   url: SITE,
   image: `${SITE}/zheadshot.png`,
-  jobTitle: "Senior Software Engineer",
-  description:
-    "Senior Software Engineer at Amazon Fire TV: distributed systems and data platforms running on 100M+ devices, agentic engineering.",
-  worksFor: {
-    "@type": "Organization",
-    name: "Amazon",
-    url: "https://www.amazon.com",
-  },
+  description: homeData.description,
   alumniOf: {
     "@type": "CollegeOrUniversity",
     name: "Virginia Tech",
   },
-  sameAs: [homeDefault.linkedin, homeDefault.github],
+  sameAs: [homeData.linkedin, homeData.github, homeData.x],
   knowsAbout: [
     "Distributed Systems",
     "Data Engineering",
@@ -39,16 +32,15 @@ const personJsonLd = {
   ],
 };
 
-const ResumePage: React.FC = () => {
-
+export default function Home() {
   return (
-    <div className="bg-gradient-to-r from-yellow-200 to-yellow-500 dark:from-gray-900 dark:to-indigo-900">
+    <>
       <Head>
         <title>Zakk Lefkowits | zakk.io</title>
-        <meta name="description" content="Zakk Lefkowits: Senior Software Engineer at Amazon Fire TV. Distributed systems, data platforms, and agentic engineering." />
+        <meta name="description" content={homeData.description} />
         <link rel="canonical" href={SITE} />
         <meta property="og:title" content="Zakk Lefkowits | zakk.io" />
-        <meta property="og:description" content="Senior Software Engineer at Amazon Fire TV. Distributed systems, data platforms, and agentic engineering." />
+        <meta property="og:description" content={homeData.description} />
         <meta property="og:type" content="website" />
         <meta property="og:url" content={SITE} />
         <meta property="og:image" content={`${SITE}/zheadshot.png`} />
@@ -58,11 +50,7 @@ const ResumePage: React.FC = () => {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
       </Head>
-      <div className="max-w-5xl mx-auto">
-        <HomePage data={homeDefault} />
-      </div>
-    </div>
+      <HomePage />
+    </>
   );
-};
-
-export default ResumePage;
+}

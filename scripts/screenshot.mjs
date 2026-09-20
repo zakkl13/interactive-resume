@@ -4,6 +4,7 @@
 //   node scripts/screenshot.mjs                 # capture the default set of targets
 //   node scripts/screenshot.mjs /resume?s=git   # capture a single path
 //   node scripts/screenshot.mjs --url http://localhost:3001
+//   node scripts/screenshot.mjs --mobile /
 //
 // If nothing is already serving the base URL, the script starts `npm run dev`,
 // waits for it, captures, then shuts it down. Output goes to ./screenshots/.
@@ -20,16 +21,23 @@ const MOBILE = { width: 390, height: 844 };
 // Parse args: flags + optional positional paths.
 const args = process.argv.slice(2);
 let baseUrl = "http://localhost:3000";
+let mobileOnly = false;
 const paths = [];
 for (let i = 0; i < args.length; i++) {
   if (args[i] === "--url") baseUrl = args[++i];
+  else if (args[i] === "--mobile") mobileOnly = true;
   else paths.push(args[i]);
 }
 
 // Default capture set: homepage + every resume skin, light and dark.
 const SKINS = ["timeline", "classic", "git", "spec", "terminal"];
 const targets = paths.length
-  ? paths.map((p) => ({ path: p, name: slug(p), theme: "light", viewport: DESKTOP }))
+  ? paths.map((p) => ({
+      path: p,
+      name: `${slug(p)}${mobileOnly ? "-mobile" : ""}`,
+      theme: "light",
+      viewport: mobileOnly ? MOBILE : DESKTOP,
+    }))
   : [
       { path: "/", name: "home", theme: "light", viewport: DESKTOP },
       { path: "/", name: "home-mobile", theme: "light", viewport: MOBILE },
