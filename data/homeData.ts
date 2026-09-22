@@ -1,6 +1,6 @@
 export const homeData = {
     name: "Zakk Lefkowits",
-    intro: "I build distributed systems for data, ML, and AI. Lately I’ve been exploring how coding agents are changing the software engineering industry.",
+    intro: "I build distributed systems for data, ML, and AI. Lately I’ve been exploring how agents can give engineers more leverage across the software development lifecycle.",
     description: "Zakk Lefkowits — distributed systems, data engineering, AI, and machine learning. Writing, projects, and a little background.",
     email: "zlefkowits@gmail.com",
     x: "https://x.com/hexednobility",
@@ -30,7 +30,7 @@ export const homeData = {
             description: [
                 "I built infrastructure for Fire TV’s catalog, bringing in new information sources and enriching data with LLM and ML classifiers. Before that, I built ",
                 { text: "developer toolkits", href: "https://developer.amazon.com/docs/fire-tv/get-started-with-firetv-integration-sdk.html" },
-                ", device software, and distributed cloud systems for Continue Watching and Live TV, reaching 100M+ devices.",
+                ", device software, and distributed cloud systems for Continue Watching and Live TV, reaching 100M+ devices. I also developed coding and operations agents for my team and helped other Fire TV teams do the same.",
             ],
         },
         { years: "2017–2020", company: "CapTech Consulting", upcoming: false, description: "I embedded with clients to build modern web applications and cloud infrastructure. I designed the target architecture for migrating a payment platform processing roughly $1 billion a year to AWS, and built a shared web platform for hundreds of insurance partners." },
