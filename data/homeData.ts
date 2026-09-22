@@ -19,7 +19,6 @@ export const homeData = {
     ],
     education: "Virginia Tech Computer Science · Class of 2017",
     links: [
-        { title: "Software of Our Own", href: "/writing/software-of-our-own", description: "On making personal software.", kind: "Essay" },
         { title: "The Coloring Book Method", href: "/writing/coloring-book-method", description: "How to make things with LLMs.", kind: "Essay" },
         { title: "Little Living Apps", href: "https://github.com/zakkl13/little-living-apps", description: "A framework for apps built and maintained by AI agents.", kind: "GitHub" },
     ],
