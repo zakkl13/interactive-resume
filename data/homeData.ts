@@ -1,6 +1,6 @@
 export const homeData = {
     name: "Zakk Lefkowits",
-    intro: "I build distributed systems for data, ML, and AI. Lately I’ve been exploring how agents can give engineers more leverage across the software development lifecycle.",
+    intro: "I build distributed systems for data, ML, and AI. Lately, I’ve been exploring how agents can give engineers more leverage across the entire software development lifecycle.",
     description: "Zakk Lefkowits — distributed systems, data engineering, AI, and machine learning. Writing, projects, and a little background.",
     email: "zlefkowits@gmail.com",
     x: "https://x.com/hexednobility",
